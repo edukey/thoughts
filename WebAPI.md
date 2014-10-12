@@ -47,7 +47,7 @@ Two strategies that can be combined :
   * Richardson "[RESTful Web Services](http://shop.oreilly.com/product/9780596529260.do)" 2007 O'Reilly
   * Richardson "[RESTful Web API](http://shop.oreilly.com/product/0636920028468.do)" 2013 O'Reilly
   * Fielding "[REST APIs must be hypertext-driven](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)"
-  * [Apigee opinion on HATEOAS](http://fr.slideshare.net/apigee/hateoas-101-opinionated-introduction-to-a-rest-api-style), [some guy bad opinion](http://www.jeffknupp.com/blog/2014/06/03/why-i-hate-hateoas/)
+  * [Apigee opinion on HATEOAS](http://fr.slideshare.net/apigee/hateoas-101-opinionated-introduction-to-a-rest-api-style), [some guy bad opinion with interesting counter comments](http://www.jeffknupp.com/blog/2014/06/03/why-i-hate-hateoas/)
   * Richardson Maturity Model : ([Fowler 2010](http://martinfowler.com/articles/richardsonMaturityModel.html))
     * 0: HTTP POST on fixed url with all API meaning within query/response body, ex: XML-RPC, SOAP
     * 1: URL as resource 
@@ -56,7 +56,7 @@ Two strategies that can be combined :
 
 ## Hypermedia - HATEOAS 
 
-Requires a way to represent "links" in API output data :
+Requires a consistent conventional way to represent "links" in API output data :
 ```
 <link rel='meeting.confirm' href='/meeting/4515457/confirm' />
 links: [ { 'rel':'meeting.confirm', 'href':'/meeting/4515457/confirm' }, ... ]
@@ -66,16 +66,19 @@ JSON hypermedia : Collection+JSON, HAL, JSON for Linking Data, Siren
 
 my thought : hypermedia is not given to end-user at runtime but to client developer at design time, it can make sens to end-user only if the UI system dynamically follow the API hypermedia (as in HTML) AND needed data (payload)
 
-* API is itself "browsable" from its start point
+* API is itself "browsable" from its start point, so participates to documentation and discovery of the API at design time by client developer
   * my thought : this reduce the need for documentation, but doc will never be avoided, so not extremely helpfull
-* indirection : URLs are provided by links not doc, "rel" defines what the url is about
-  * this allow server-side to change its urls, but not its keywords in "rel"
+  * my thought : if the API also has a HTML format, it may allow the end-user to browse it directly without need for developer
+* indirection : URLs are provided by links not hard-coded from doc, "rel" defines what the url is about
+  * this allow server-side to change its urls roots, but not its keywords in "rel"
     * my thought : it much complexifies the client side for a "small" advantage on server side
+    * my thought : anyway, the URL parameters/templates and in/out data must be documented to developer
     * my thought : anyway, the exact usage of the url must be known in advance by the client developer, based on what documentation says about the "rel" keyword
-* related resources : the API directly says how to reach other resources which have relations to the current one
+* related resources : the API directly says how to reach other resources which have relations to the current one, the developer does not need to reconstruct such urls as per documentation says
 * authorized action (state transition) : the API say which action is possible on the current resource
+  * the developer can write some logic as per the allowed transitions
   * my thought : this may have some value, other way will be the client to first try the operation on the resource (transition) and get an error from the server, like 403
-*  my thought : interestingly, REST url are mainly understood as resource centric, but Hypermedia "sub-"urls are about action (transition)
+*  my thought : interestingly, REST urls are mainly understood as resource centric, but Hypermedia "sub-"urls are about action (transitions)
 
 * Hypermedia apis : 
   * https://api.github.com/ : you could have a UI client to browse this api without knowning it, only its link semantic of xxx_url fields and parameters
@@ -87,12 +90,7 @@ my thought : hypermedia is not given to end-user at runtime but to client develo
 
 ```
 GET /account/12345 HTTP/1.1
-  Host: somebank.org
-  Accept: application/xml
-```
 
-Here is a response at T1:
-```
 HTTP/1.1 200 OK
 Content-Type: application/xml
 Content-Length: ...
@@ -111,7 +109,7 @@ Content-Length: ...
  </account>
 ```
 
-Here is another response at T2:
+Here is another response at T2, with less possible actions:
 
 ```
 HTTP/1.1 200 OK
@@ -122,6 +120,9 @@ Content-Length: ...
 <account>
     <account_number>12345</account_number>
     <balance currency="usd">-25.00</balance>
+   <link rel="to.agency" href="/agency/richmond" />
+   <link rel="to.client" href="/client/john.doe" />
+   <link rel="to.officer" href="/officer/michael.johnson" />
     <link rel="deposit" href="/account/12345/deposit" />
 </account>
 ```
