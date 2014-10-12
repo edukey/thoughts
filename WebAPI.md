@@ -7,14 +7,14 @@
   * or as Accept header with mime type : Accept: text/xml ; Accept: application/vnd.acme.account+xml
 * actual format of request or response body use Content-Type : Content-Type: text/xml ; Content-Type: application/vnd.acme.account+xml
 
-* xml : good for tools and validation, low for human
+* xml : good for tools and validation, low for human, data types defined by XSD, no clear list semantic, attributes (meta-data) ?, verbose
   * rdf : good for meta model
   * atom : good for links
-* json : good for javascript clients &amp; servers, average for human
+  * html : good for humans only when behind a browser, like xml
+* json : good for javascript clients &amp; servers, average for human, self expressed types (string, num, boolean, list) but no date-time type
 * csv : good for human when small and comma used, good for Excel and SQL databases import/export, good for volumes
-* yaml : good for human
-* html : good for humans behind a browser
-* markdown : good for humans behind a simple text editor, low for semantics
+* yaml : good for human, has comments, supports datetime, indentation based, can do explicit typing
+* markdown : good for humans behind a simple text editor, no data semantics
 
 ## Versionning
 
