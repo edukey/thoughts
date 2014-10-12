@@ -41,12 +41,14 @@ Two strategies that can be combined :
     * State Transfer : browse from page (state) to page (state) via links (transitions)
 * Pragmatical
   * Allamaraju "[RESTful Web Services Cookbook](http://shop.oreilly.com/product/9780596801694.do)" 2010 O'Reilly
-  * Masse "[REST API Design Rulebook](http://shop.oreilly.com/product/0636920021575.do)" 2011 O'Reilly
   * http://restcookbook.com/, http://rest.elkstein.org/ (2008)
 * "Truly RESTful" : 
   * Richardson "[RESTful Web Services](http://shop.oreilly.com/product/9780596529260.do)" 2007 O'Reilly
+  * Fielding "[REST APIs must be hypertext-driven](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)" 2008
+  * Webber "[REST in Practice](http://shop.oreilly.com/product/9780596805838.do)" 2010 O'Reilly
+  * Amundsen "[Building Hypermedia APIs with HTML5 and Node](http://shop.oreilly.com/product/0636920020530.do)" 2011 O'Reilly
+  * Masse "[REST API Design Rulebook](http://shop.oreilly.com/product/0636920021575.do)" 2011 O'Reilly
   * Richardson "[RESTful Web API](http://shop.oreilly.com/product/0636920028468.do)" 2013 O'Reilly
-  * Fielding "[REST APIs must be hypertext-driven](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)"
   * [Apigee opinion on HATEOAS](http://fr.slideshare.net/apigee/hateoas-101-opinionated-introduction-to-a-rest-api-style), [some guy bad opinion with interesting counter comments](http://www.jeffknupp.com/blog/2014/06/03/why-i-hate-hateoas/)
   * Richardson Maturity Model : ([Fowler 2010](http://martinfowler.com/articles/richardsonMaturityModel.html))
     * 0: HTTP POST on fixed url with all API meaning within query/response body, ex: XML-RPC, SOAP
