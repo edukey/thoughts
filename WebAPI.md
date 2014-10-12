@@ -47,7 +47,7 @@ Two strategies that can be combined :
   * Richardson "[RESTful Web Services](http://shop.oreilly.com/product/9780596529260.do)" 2007 O'Reilly
   * Richardson "[RESTful Web API](http://shop.oreilly.com/product/0636920028468.do)" 2013 O'Reilly
   * Fielding "[REST APIs must be hypertext-driven](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)"
-  * [Apigee opinion on HATEOAS](http://fr.slideshare.net/apigee/hateoas-101-opinionated-introduction-to-a-rest-api-style)
+  * [Apigee opinion on HATEOAS](http://fr.slideshare.net/apigee/hateoas-101-opinionated-introduction-to-a-rest-api-style), [some guy bad opinion](http://www.jeffknupp.com/blog/2014/06/03/why-i-hate-hateoas/)
   * Richardson Maturity Model : ([Fowler 2010](http://martinfowler.com/articles/richardsonMaturityModel.html))
     * 0: HTTP POST on fixed url with all API meaning within query/response body, ex: XML-RPC, SOAP
     * 1: URL as resource 
