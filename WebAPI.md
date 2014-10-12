@@ -1,11 +1,11 @@
 # Web API
 
-## Format
+## Formats
 
 * requested format for response :
   * within url as account.xml, account.json, accounts.csv
-  * or as Accept header with mime type : Accept: text/xml ; Accept: application/vnd.acme.account+xml
-* actual format of request or response body use Content-Type : Content-Type: text/xml ; Content-Type: application/vnd.acme.account+xml
+  * or as Accept header with mime type : `Accept: text/xml` ; `Accept: application/vnd.acme.account+xml`
+* actual format of request or response body use Content-Type : `Content-Type: text/xml` ; `Content-Type: application/vnd.acme.account+xml`
 
 * xml : good for tools and validation, low for human, data types defined by XSD, no clear list semantic, attributes (meta-data) ?, verbose
   * rdf : good for meta model
@@ -13,16 +13,19 @@
   * html : good for humans only when behind a browser, like xml
 * json : good for javascript clients &amp; servers, average for human, self expressed types (string, num, boolean, list) but no date-time type
 * csv : good for human when small and comma used, good for Excel and SQL databases import/export, good for volumes
-* yaml : good for human, has comments, supports datetime, indentation based, can do explicit typing
-* markdown : good for humans behind a simple text editor, no data semantics
+* [yaml](http://www.yaml.org/) : good for human, has comments, supports datetime, indentation based, can do explicit typing ; [js-yaml](https://github.com/nodeca/js-yaml)
+* markdown : good for humans, but no data structure semantics (fields, types), can be emulated with added semantics (using bullets)
 
 ## Versionning
 
-* Ensure client wont break on new fields, but just ignore them : non-breaking changes
-* Allow client to explicitely declare the fields it wants to get (ODATA)
+Two strategies that can be combined :
 
-within url as /api/v1/account => breaks HATEOAS
-within header as Accept : Accept: application/vnd.acme.account-v2+xml => HATEOAS compliant
+* Ensure non breaking changes
+  * Ensure client wont break on new fields, but just ignore them : non-breaking changes (avoid XSD validation)
+  * Allow client to explicitely declare the fields it wants to get (ODATA)
+* Support multiple parallel versions
+  * within url as `/api/v1/account` => breaks HATEOAS
+  * within header as : `Accept: application/vnd.acme.account-v2+xml` => HATEOAS compliant
 
 * [Williams 2008](http://barelyenough.org/blog/2008/05/versioning-rest-web-services/)
 
@@ -37,11 +40,12 @@ within header as Accept : Accept: application/vnd.acme.account-v2+xml => HATEOAS
   * Uniform interface
     * State Transfer : browse from page (state) to page (state) via links (transitions)
 * Pragmatical
-  * Allamaraju "RESTful Web Services Cookbook" 2010 O'Reilly
-  * Masse "REST API Design" 2011 O'Reilly
+  * Allamaraju "[RESTful Web Services Cookbook](http://shop.oreilly.com/product/9780596801694.do)" 2010 O'Reilly
+  * Masse "[REST API Design Rulebook](http://shop.oreilly.com/product/0636920021575.do)" 2011 O'Reilly
   * http://restcookbook.com/
 * "Truly RESTful" : 
-  * Richardson "RESTful Web Services" 2007 O'Reilly, "RESTful Web API" 2013 O'Reilly
+  * Richardson "[RESTful Web Services](http://shop.oreilly.com/product/9780596529260.do)" 2007 O'Reilly
+  * Richardson "[RESTful Web API](http://shop.oreilly.com/product/0636920028468.do)" 2013 O'Reilly
   * Fielding "[REST APIs must be hypertext-driven](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)"
   * [Apigee opinion on HATEOAS](http://fr.slideshare.net/apigee/hateoas-101-opinionated-introduction-to-a-rest-api-style)
   * Richardson Maturity Model : ([Fowler 2010](http://martinfowler.com/articles/richardsonMaturityModel.html))
