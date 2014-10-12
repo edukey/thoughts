@@ -24,8 +24,8 @@ Two strategies that can be combined :
   * Ensure client wont break on new fields, but just ignore them : non-breaking changes (avoid XSD validation)
   * Allow client to explicitely declare the fields it wants to get (ODATA)
 * Support multiple parallel versions
-  * within url as `/api/v1/account` => breaks HATEOAS
-  * within header as : `Accept: application/vnd.acme.account-v2+xml` => HATEOAS compliant
+  * within url as `/api/v1/account` => breaks Hypermedia
+  * within header as : `Accept: application/vnd.acme.account-v2+xml` => Hypermedia compliant
 
 * [Williams 2008](http://barelyenough.org/blog/2008/05/versioning-rest-web-services/)
 
@@ -42,7 +42,7 @@ Two strategies that can be combined :
 * Pragmatical
   * Allamaraju "[RESTful Web Services Cookbook](http://shop.oreilly.com/product/9780596801694.do)" 2010 O'Reilly
   * Masse "[REST API Design Rulebook](http://shop.oreilly.com/product/0636920021575.do)" 2011 O'Reilly
-  * http://restcookbook.com/
+  * http://restcookbook.com/, http://rest.elkstein.org/ (2008)
 * "Truly RESTful" : 
   * Richardson "[RESTful Web Services](http://shop.oreilly.com/product/9780596529260.do)" 2007 O'Reilly
   * Richardson "[RESTful Web API](http://shop.oreilly.com/product/0636920028468.do)" 2013 O'Reilly
@@ -79,6 +79,7 @@ my thought : hypermedia is not given to end-user at runtime but to client develo
 
 * Hypermedia apis : 
   * https://api.github.com/ : you could have a UI client to browse this api without knowning it, only its link semantic of xxx_url fields and parameters
+  * [Paypal](https://developer.paypal.com/docs/integration/direct/paypal-rest-payment-hateoas-links/)
 
 * Frameworks :
   * [Restfulie](http://restfulie.caelum.com.br/)
