@@ -2,7 +2,7 @@
 ## For mainstream enterprise developers
 
 * [What do we still need](needs.md)
-* [What to have and to avoid](needed.md)
+* [What to have and to avoid](features.md)
 * [Timeline](timeline.md)
 * [Java and CSharp evolutions](mains.md)
 * [New joiners](new.md)
