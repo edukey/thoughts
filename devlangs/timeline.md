@@ -1,6 +1,6 @@
 # Overview of global history
 
-'''mygraph
+```mygraph
 Viewport 1000 1000
 
 T 100 0 - 1960 
@@ -33,4 +33,4 @@ Class ldyn T d:italic
 T 10 10 lsta Fortran
 T 10 10 lsta Algol
 T 10 10 lsta Basic
-'''
+```
