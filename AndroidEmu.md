@@ -6,9 +6,10 @@
   - bluestacks
   - windroy
   - google app runtime on chromeos (and archon patch to run on chrome browsers with any os)
-  - blackberry 10 tentative ?
+  - blackberry 10.2.1 (qnx) can run .apk
 - based on virtu of an android x86 distro
   - google sdk x86 image with intel haxm (win, mac) or kvm (linux) virtu
+  - jar of beans x86 image on haxm
   - android-x86 virtualbox
   - intel android x86 virtualbox
   - genymotion virtualbox
