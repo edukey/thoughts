@@ -1,23 +1,23 @@
-# android emu on intel device
+# android emulators
 
-note: to  run usually  on intel device : mac, win/lin pc
-
-note: apps using ndk with only arm code requires translation (using lib houdini from intel)
-
-note: ios sdk has a simulator working on x86 mac, not an full emulator
-
-- based on full emu of cpu with os
-  - google sdk qemu arm
+- notes: 
+  - emulator to be run usually on intel devices : mac, or pc with win/lin
+  - apps using ndk with only arm code requires translation (using intel's houdini lib)
+  - ios sdk has a simulator working on x86 mac, not an full emulator
+  - android is open sourced
 - based on simulating an android apk app runtime (dalvik and apis), no linux inside
   - bluestacks
   - windroy
-  - google app runtime on chromeos (and archon patch to run on chrome browsers with any os)
-  - blackberry 10.2.1 (qnx) can run .apk
+  - google app runtime on ChromeOS (ARC) ; nacl nexe with dalvikvm.so dexopt.so libandroidfw.so ...
+    - and Archon patch to run on Chrome browsers under any os, as unpacked extension
+  - blackberry 10.2.1 (qnx) can [run android apps](http://developer.blackberry.com/android/) : re-implemented dalvik vm, apis, svcs above bb10 qnx, no support for ndk apps
+- based on full emu of cpu with os
+  - google sdk qemu with arm image
 - based on virtu of an android x86 distro
-  - google sdk x86 image with intel haxm (win, mac) or kvm (linux) virtu
-  - jar of beans x86 image on haxm
-  - android-x86 virtualbox
-  - intel android x86 virtualbox
-  - genymotion virtualbox
+  - google sdk qemu with x86 image using intel haxm (win, mac) or kvm (linux) virtualization
+  - jar of beans x86 image of android 4.1.1 running on qemu haxm
+  - android-x86 on virtualbox
+  - intel android-ia on virtualbox
+  - genymotion (androvm) on virtualbox
   - andy virtualbox based on genymotion vhd
-  - youwave virtualbox
+  - youwave on virtualbox
