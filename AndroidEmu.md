@@ -1,5 +1,9 @@
 # android emu on intel device
 
+note: to  run usually  on intel device : mac, win/lin pc
+note: apps using ndk have native arm code that requires translation (lib houdini from intel)
+note: ios sdk has a simulator working on x86 mac, not an full emulator
+
 - based on full emu of cpu with os
   - google sdk qemu arm
 - based on simulating an android apk app runtime (dalvik and apis), no linux inside
