@@ -1,7 +1,9 @@
 # android emu on intel device
 
 note: to  run usually  on intel device : mac, win/lin pc
-note: apps using ndk have native arm code that requires translation (lib houdini from intel)
+
+note: apps using ndk with only arm code requires translation (using lib houdini from intel)
+
 note: ios sdk has a simulator working on x86 mac, not an full emulator
 
 - based on full emu of cpu with os
