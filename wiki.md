@@ -16,6 +16,8 @@ do not need wysiwyg editor
   - MediaWiki : php sql
   - Tiki
   - DokuWiki : files
+  - WikkaWiki : php mysql
+  - mindtouch : php commercial
   - FosWiki : Perl, files
   - Moinmoin : Python, files
   - Instiki : Ruby rails, sql, markdown, math, svg editor
