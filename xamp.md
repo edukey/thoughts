@@ -1,4 +1,4 @@
-# Light Web App Container
+# Light Web App with DB
 
 Define minimal config for working apache/php/mysql and infos on other stuffs
 
