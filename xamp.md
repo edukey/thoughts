@@ -1,3 +1,5 @@
+# Light Web App Container
+
 Define minimal config for working apache/php/mysql and infos on other stuffs
 
 * may move all binaries from apache/php/mysql in same bin folder : ~14 files
@@ -52,15 +54,30 @@ PHPIniDir conf
 
 # Languages
 
+Languages that did not fully integrate the web layer and are better wrapped by apache
+
 ## PHP
 
+the P in LAMP.
+Well packaged : a single dll contains all php : runtime and core libs
+
+* php5apache2_2.dll apache module calling php
+* php5ts.dll php itself
+* php_mysql.dll php bridge to mysql 
+
+* php.exe : CLI interpreter (not needed for web)
+
 ## Ruby
+
+Also integrated web server : webrick
 
 ## Python
 
 ## Perl
 
 # Databases
+
+Free light and well known sql db (pre nosql buzz)
 
 ## Mysql
 
@@ -101,12 +118,36 @@ sort_buffer_size = 8M
 interactive-timeout
 ```
 
+note: mariadb as fork from author since Oracle ownership
+
 ## PostgreSql
 
 ## Sqlite
 
+As embedded sql engine so the apache process run it all
+
+# Node.js world
+
+no need for web frontend : integrated web server
+
+very few embedded db engine (tingodb?) usually use NoSQL JSON aware dbs like MongoDB or CouchBase (or Redis)
+
+# Java world
+
 ## Tomcat
+
+Other web containers : GlassFish, JBoss ; heavy 'J2EE' ones : WebLogic, WebSphere
+
+## Jetty
 
 ## H2
 
+Common embedded SQL DB
+
 ## Derby
+
+Common embedded or standalone SQL DB
+
+# Dotnet world
+
+usually IIS as frontend and SQLServer(Express) as db
