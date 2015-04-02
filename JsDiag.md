@@ -47,6 +47,9 @@ Charting libs, to visualize numbers, usually does not allow to manipulate shapes
 ## Enterprise Web modelers
 
 - Casewise
+- MEGA HOPEX
+- SAG Aris
+- Troux ?
 
 ## Web Tools
 
