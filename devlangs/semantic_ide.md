@@ -14,10 +14,11 @@ retrieved by both the compiler/interpreter and the IDE to do their respective jo
 * Errors may be due to the syntax itself, most are catched by the IDE, then the compiler/interpreter.
 * some languages use meta-programming to allow developers to implement their own syntax sugar and simplified way to do complex stuff
 * Various syntax styles and keywords exists without semantic differences : 
-  * brackets { } : c, perl, java, javascript, c#
+  * curly brackets { } : c, perl, java, javascript, php, c#
   * begin end: pascal, vb, ruby
-  * indentation alone: python, coffeescript, yaml (anyway all languages allows indentation for readability)
-  * parenthesis heaven (add (sub x y) z): lisp, clojure
+  * newline matters
+  * indentation matters (off-side rule): python, coffeescript, yaml (anyway all languages allows indentation for readability)
+  * parenthesis heaven (all is expression): lisp, clojure
 
 Language syntax :
 * Define a language with a rigid syntax : a unique way to represent a semantic tree
