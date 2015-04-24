@@ -36,6 +36,7 @@ IDE :
   * brackets or begin/end or lisp, indent size, multiple instructions on same line if simple
   * keywords in user's language
   * syntax sugar for specific concepts, or keep detailled syntax
+  * visual programming : with boxes (shapes) and lines
 * Web based IDE to be quickly usable on the web (cloud), but also local desktop tool
   * should be handleable with keyb only (on laptop/desktop with efficient keyboard)
   * may be also a finger version for tablets/smartphones ?
