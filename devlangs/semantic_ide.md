@@ -1,5 +1,9 @@
 # Semantic IDE
 
+Let the IDE render the language in various ways to accommodate each ones personal flavours, 
+with a single possible syntax behind, human readable and source control friendly.
+
+Facts :
 * All development languages have a human understandable and IDE supported textual syntax, behind which lied a semantic 
 retrieved by both the compiler/interpreter and the IDE to do their respective jobs.
 * Many peoples have different ways to quickly understand a program : may need space and keywords, or instead compacity and rich characters set
@@ -29,7 +33,11 @@ Language syntax :
 * Should use row by row and forced indentation
 * Should be easily parseable (build the semantic tree in simple forward mode)
 * Should finely represent both code logic and data structures
+* comments and code disabling as first class feature
 * semantic: contain state of the art features : object & functional, no null exception, integrated async/actor
+* bonus : could generate to existing languages, and support completion for various ABI/IDL systems
+  * at least java/c#/javascript (like the Fantom language), possibly ruby & python also, maybe go, should try "modern" ones like kotlin, ceylon, scala
+  * although it is not realistic because of debug needs, but a good demonstration of capabilities
 
 IDE :
 * Provide an IDE capable to render/edit the semantic tree in various ways/styles as fit the developer
