@@ -30,7 +30,7 @@
   * EngineYard (2006) : ruby then php, nodejs (2011), java
     * postgresql, mysql, redis, memcached 
     * run on Gentoo/Ubuntu ; Nginx ; HAProxy ; AWS then AzureVm? (2013) ; Deis and Docker (2015)
-  * Google AppEngine (2008) : pythonthen java, go ; nosql bigtable gql then mysql
+  * Google AppEngine (2008 beta, 2011 rel) : pythonthen java, go ; nosql bigtable gql then mysql
   * Force.com : apex (prop lang) ; prop db
   * Azure Workers
   * Jelastic (2010)
