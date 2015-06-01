@@ -26,6 +26,8 @@ Persist amount of (pre)structured data
   * kv
     * Redis c
     * Riak erlang rest
+    * Amazon DynamoDB cloud only
+    * MS Azure Table cloud only 
   * MultiModel : support joins/links
     * OrientDB java rest
     * ArangoDB c,v8 rest
