@@ -1,6 +1,6 @@
 # Virtualization
 
-From most impact and constrains to less impacts and constrains
+From most impacts and constrains on sources & host, to less impacts and constrains
 
 ## Runtime
 
@@ -12,7 +12,7 @@ Require specific coding for a specific runtime abstracting from underlying OS (u
 - Android : DalvikVM, ART : runtime gives limited access to underlying linux resources
 - many "script" envs : nodejs, python, ruby, perl (parrotVM), tcl, ...
 - others : LLVM (for cross build chains) ; Dis (inferno) ; Squeak (smalltalk)
-- Cloud runtimes : AppEngine, Heroku, Salesforce
+- Cloud runtimes : AppEngine, Heroku, Salesforce (apex lang), Azure Workers
 
 ## OS emulation
 
