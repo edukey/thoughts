@@ -50,7 +50,6 @@ The VM rely on underlying cpu to directly execute cpu code, so it must be the sa
 - VirtualBox : 
 - VirtualPC : replaced by Hyper-V since Win8
 - Hyper-V : 
-- Vagrant
 
 ## Any archi
 
