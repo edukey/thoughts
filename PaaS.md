@@ -3,23 +3,37 @@
 * IaaS : (de)allocate VM with prebunbled OS, maybe augmented with some standard software (ex: db engine, web container, runtimes)
   * root access to VMs : disk, configs
   * pay per use : disk size, cpu used (cores), mem used, network bandwidth in/out ?
-  * middleware/app containers to be set up
-  * ex: Amazon EC2, S3 ; Google ; Azure VMs ; many "cloud" hosting company
+  * middleware/applications to be installed above the VMs by yourself
+  * ex: Amazon EC2, S3 ; Google Cloud Compute Engine  ; Azure VMs ; many "cloud" hosting company
+* IaaS++ : Container instead of VM
+  * manage Containers (Docker) instead of VM directly
+  * easier to setup
+  * Load Balancer managed in front of the containers
+  * faster scalability but not automatic : you must handle it by changing you cluster
+  * ex: Google Cloud Container Engine (Kubernetes+Docker)
 * PaaS : 
-  * no access to underlying VM, no root access, no access to file system
+  * no access to underlying VM, no root access, no access to file system : deploy code package
   * constrained by supported runtimes (java, dotnet, ruby, python, php, ...), APIs, Db Engines
+    * access to NoSql specific db or SQL db as usual (but without scalability then)
+    * provide distributed memory cache
+    * provide inter-workers communication systems : RPC, Messages Queues ?
+    * integrated user authentication systems
+    * capacity to send emails, to call urls
   * usually expect quick response to HTTP query (max duration)
-  * specific management of background treatments
-  * auto-scalable, monitoring and deployment system : devops
+  * specific management of background treatments (workers)
+  * auto-scalability, monitoring and deployment system : devops
+  * auto manage version upgrade rolling, multiple versions in parallel
   * pay per use : # "operations", volume of db, volume of mem cache, # connections, network bandwidth ?
   * ex: Heroku, Google AppEngine, Azure Workers 
-* PaaS-- : mutualized hosting of simple web+sql db space
+* PaaS-- : mutualized hosting of simple web+sql db space : no scalability
   * FTP/WebDAV access to folder tree of website, usually with limited disk size, write access
   * access to a sql database space, also with limited size
   * usually prebundled with additional web software (ex: CMS like drupal, joomla ; wikis ; web commerce)
   * not possible to modify the global config of the web engine and db engine
   * usually no ensured capacity (cpu cores, mem)
   * ex: free.fr (php+mysql), Azure Web ?
+
+## List of PaaS providers
 
 * Public :
   * Zimki (2006) : js, nosql, mq ; closed 2007
