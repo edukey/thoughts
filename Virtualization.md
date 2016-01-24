@@ -1,5 +1,7 @@
 # Virtualization
 
+From most impact and constrains to less impacts and constrains
+
 ## Runtime
 
 Require specific coding for a specific runtime abstracting from underlying OS
@@ -9,12 +11,19 @@ Require specific coding for a specific runtime abstracting from underlying OS
 - Android : DalvikVM, ART
 - many "script" envs : nodejs, python, ruby, perl (parrotVM), tcl, ...
 - others : LLVM (for cross build chains) ; Dis (inferno) ; Squeak (smalltalk)
+- Cloud runtimes : AppEngine, Heroku, Salesforce
+
+## OS emulation
+
+Need to recompile source code to bind it to the emulation libraries of the original OS to the host OS
+
+- cygwin, mingw
 
 ## Application Container
 
 Abstract a native OS app with an intermediate layer, between the app and the OS, that mimic the OS.
 This allow to get fine grained control, for example over I/Os (disk access, network usage) over any application.
-This usually require to repackage the application to make it use
+This usually require to repackage (but not recompile) the application binaries to make it use the container.
 
 https://en.wikipedia.org/wiki/Application_virtualization
 
@@ -28,7 +37,7 @@ https://en.wikipedia.org/wiki/Application_virtualization
 
 ## Any OS on same cpu
 
-The VM rely on underlying cpu to directly execute cpu code, so it must be the same cpu architecture
+The VM rely on underlying cpu to directly execute cpu code, so it must be the same cpu architecture as the host.
 
 ### Intel x86
 
@@ -38,15 +47,9 @@ The VM rely on underlying cpu to directly execute cpu code, so it must be the sa
 - Hyper-V : 
 - Vagrant
 
-### OS emulation
-
-Need to recompile source code to bind it to the emulation libraries of the original OS to the host OS
-
-- cygwin, mingw
-
 ## Any archi
 
-The VM emulate other cpu architecture, usually slow
+The VM emulate other cpu architecture, usually very slow
 
 https://en.wikipedia.org/wiki/Comparison_of_platform_virtualization_software, 
 https://en.wikipedia.org/wiki/List_of_emulators
