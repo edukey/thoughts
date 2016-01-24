@@ -14,11 +14,12 @@
 * PaaS : 
   * no access to underlying VM, no root access, no access to file system : deploy code package
   * constrained by supported runtimes (java, dotnet, ruby, python, php, ...), APIs, Db Engines
-    * access to NoSql specific db or SQL db as usual (but without scalability then)
-    * provide distributed memory cache
-    * provide inter-workers communication systems : RPC, Messages Queues ?
-    * integrated user authentication systems
-    * capacity to send emails, to call urls
+  * access to NoSql specific db or SQL db as usual (but without scalability then) and even BigData
+  * provide object/blob/file storage
+  * provide distributed memory cache
+  * provide inter-workers communication systems : RPC, Messages Queues ?
+  * integrated user authentication systems
+  * capacity to send emails, to call urls
   * usually expect quick response to HTTP query (max duration)
   * specific management of background treatments (workers)
   * auto-scalability, monitoring and deployment system : devops
