@@ -8,7 +8,8 @@ Require specific coding for a specific runtime abstracting from underlying OS (u
 
 - Java JVM ; JikesVM ; UI : Swing, SWT, AWT, JavaFX
 - Dotnet CLR : DotGnu, Mono, DotnetCore ; UI : Silverlight (deprecated)
-- Android : DalvikVM, ART
+- WinRT with winrt apps, the runtime gives limited/controlled access to disk and other OS resources
+- Android : DalvikVM, ART : runtime gives limited access to underlying linux resources
 - many "script" envs : nodejs, python, ruby, perl (parrotVM), tcl, ...
 - others : LLVM (for cross build chains) ; Dis (inferno) ; Squeak (smalltalk)
 - Cloud runtimes : AppEngine, Heroku, Salesforce
