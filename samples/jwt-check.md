@@ -1,5 +1,4 @@
-JWT signature check 
-===================
+# JWT signature check
 
 Simple examples of JWT signature checks in different languages using only standard libraries where possible to show how it works, using RSA-SHA256.
 
@@ -9,8 +8,7 @@ This is not production grade : no error management. Indentation is removed.
 
 We consider that JWT is in a text file, and public key from a certificate file.
 
-Reminder
---------
+## Reminder
 
 JWT is composed of 3 base64url parts separated by a dot '.'
 - header as JSON, ex: `{"alg":"RS56","typ":"JWT"}`
@@ -25,8 +23,7 @@ Algo with 'HS' are symmetric HMAC, should not be used unless key is only for one
 
 'RS' and 'JS' algos are asymmetric RSA, 'JS' (JSS padding instead of PKCS7 one) is more secure but less common.
 
-Nodejs
-------
+## Nodejs
 
 ```javascript
 const fs = require('fs')
@@ -44,8 +41,7 @@ console.log(verif)
 
 NB: yes, I do not put ';' at end of javascript lines, feels more readable
 
-Ruby
-----
+## Ruby
 
 ```ruby
 require 'openssl'
@@ -60,8 +56,7 @@ verif = cert.public_key.verify(OpenSSL::Digest::SHA256.new, sign, tocheck)
 puts verif
 ```
 
-Python
-------
+## Python
 
 Python standard library has no way to check RSA signatures, needs external libraries as pyopenssl or pca/cryptography (both relying above openssl lib)
 
@@ -76,9 +71,12 @@ sign64 = parts[2].ljust(len(sign64)+(len(sign64)%4),'=')
 sign = base64.urlsafe_b64decode(sign64)
 ```
 
+### pyopenssl
+
+https://www.pyopenssl.org/en/20.0.1/api/crypto.html
+`pip install openssl`
+
 ```python
-# https://www.pyopenssl.org/en/20.0.1/api/crypto.html
-# pip install openssl
 from  OpenSSL import crypto
 pem = open("cert.pem","rb").read()
 cert = crypto.load_certificate(crypto.FILETYPE_PEM, pem)
@@ -86,20 +84,37 @@ verif = crypto.verify(cert, sign, tocheck, 'sha256')
 print(verif, 'None means OK, else exception is raised')
 ```
 
+### pca/cryptography
+
+https://cryptography.io/
+`pip install cryptography`
+
 ```python
-# pip install cryptography
-from cryptography.hazmat.backends import default_backend
+from cryptography.x509
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.primitives.serialization import load_pem_public_key
-pem = open("pubkey.pem","rb").read()
-pubkey = load_pem_public_key(pem, backend=default_backend())
+pem = open("cert.pem","rb").read()
+cert = x509.load_pem_x509_certificate(pem)
+pubkey = cert.public_key()
 verif = pubkey.verify(sign, tocheck, padding.PKCS1v15(), hashes.SHA256())
 print(verif, 'None means OK, else exception is raised')
 ```
 
-Java
-----
+If you have a certificate as a base64 string from jwks :
+```
+der = base64.b64decode(cerbase64)
+cert = x509.load_der_x509_certificate(der)
+```
+
+If you directly have the public key instead of a certificate :
+```
+from cryptography.hazmat.primitives.serialization import load_pem_public_key
+from cryptography.hazmat.backends import default_backend
+pem = open("pubkey.pem","rb").read()
+pubkey = load_pem_public_key(pem, backend=default_backend())
+```
+
+## Java
 
 Using Java 8
 
@@ -135,8 +150,7 @@ System.out.println(e);
 }
 ```
 
-C#
-----
+## C#
 
 Using C# 5 on dotnet fmk 8, there is no base64url, so convert to base64 format
 
@@ -169,8 +183,7 @@ Console.WriteLine(e);
 }
 ```
 
-Go
---
+## Go
 
 ```go
 package main
