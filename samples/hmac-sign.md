@@ -189,3 +189,24 @@ func main() {
   fmt.Println("base64 signature:", signatureBase64) // dD7B2f0/4pyGlR7+MIVL7jcyuCqcyyOeLLzdPwv3m1E=
 }
 ```
+
+## Rust
+
+```rust
+// no hmac in rust std lib, using "ring" external one
+use ring::hmac;
+use base64;
+fn main() {
+  let body_string = "{\"id\":1,\"name\":\"Gizmo\",\"price\":1.99}";
+  let content_type = "application/json";
+  let request_id = "f058ebd6-02f7-4d3f-942e-904344e8cde5";
+  let to_sign = [body_string, content_type, &body_string.len().to_string(), request_id].concat();
+  println!("content to sign: {:?}", to_sign);
+  let key_bytes = base64::decode("GzmVoVZJQ+O4SsnRzV3//g==").unwrap();
+  let key = hmac::Key::new(hmac::HMAC_SHA256, &key_bytes);
+  let tag = hmac::sign(&key, to_sign.as_bytes());
+  let signature_bytes = tag.as_ref();
+  let signature_base64 = base64::encode(signature_bytes);
+  println!("base64 signature: {:?}", signature_base64);
+}
+```
