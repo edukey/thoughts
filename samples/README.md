@@ -2,7 +2,7 @@
 
 This folder contains code samples for dedicated tasks in most used languages, usually web oriented
 
-see rosettacode.org and tutorialspoint.dev
+see https://rosettacode.org , https://tutorialspoint.dev
 
 see TIOBE index
 
