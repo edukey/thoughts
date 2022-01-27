@@ -1,8 +1,12 @@
-Code samples in most used languages/runtimes
+# Code samples in multiple languages
+
+This folder contains code samples for dedicated tasks in most used languages, usually web oriented
+
+see rosettacode.org and tutorialspoint.dev
 
 see TIOBE index
 
-Scripting 
+## Scripting 
 
 | runtime | lang | desc |
 |-|-|-|
@@ -13,7 +17,13 @@ Scripting
 | ruby | ruby | no more buzz since RoR |
 | php | php | still huge codebase, no new stuffs |
 
-Bytecode
+perl, raku = perl6
+
+lua, neko for embedded scripting with easy c bounds
+
+gdscript : proprietary scripting in Gotdot Game Engine, close to python
+
+## Bytecode
 
 | runtime | lang | desc |
 |-|-|-|
@@ -21,18 +31,18 @@ Bytecode
 | java | kotlin | android defaults |
 | java | groovy | no more buzz since Grails |
 | java | scala | . |
-| java | clojure | . |
-| java | ceylon | never took of |
-| dotnet | csharp | . |
-| dotnet | fsharp | . |
+| java | clojure | for functional nerds |
+| java | ceylon | never took of, kotlin wins as potential java successor |
+| dotnet | csharp | what java should have become |
+| dotnet | fsharp | for functional nerds |
 
-Compile
+## Compile
 
 | runtime / lang | desc |
 |-|-|
 | c | too low level, manual mem mgtm |
 | cpp | complex, manual mem mgtm or gc libs |
-| go | . |
+| go | easy, no oo complex stuff |
 | rust | complex as ensures safe code  |
 | objective-c | for apple devices |
 | swift | the new objective-c |
