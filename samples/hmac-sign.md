@@ -50,6 +50,38 @@ const signatureBase64 = hmac.update(toSign, 'utf8').digest('base64');
 console.log('base64 signature:', signatureBase64); // dD7B2f0/4pyGlR7+MIVL7jcyuCqcyyOeLLzdPwv3m1E=
 ```
 
+## Denojs
+
+Deno relies on Web APIs like atob/bota and WebCrypto and TextEncoding,
+but atob/btoa uses string, WebCrypto uses uint8array,
+and there is no native method to map string with uint8array.
+TextEncoder/Decoder cannot be used as UTF8 modifies the bytes to encode chars above 127 with two bytes.
+So we use one line complex expression.
+
+```javascript
+const body = {id:1,name:"Gizmo",price:1.99}
+const bodyString = JSON.stringify(body)
+console.log('string body:', bodyString) // {"id":1,"name":"Gizmo","price":1.99}
+const contentType = 'application/json'
+const xRequestId = 'f058ebd6-02f7-4d3f-942e-904344e8cde5'
+const toSign = bodyString + contentType + bodyString.length + xRequestId;
+// {"id":1,"name":"Gizmo","price":1.99}application/json36f058ebd6-02f7-4d3f-942e-904344e8cde5
+console.log('content to sign:', toSign)
+// only if string has all chars below 128
+//const toSignBytes=new TextEncoder().encode(toSign)
+const toSignBytes = Uint8Array.from([...toSign].map(ch => ch.charCodeAt(0)))
+
+const keyBase64 = 'GzmVoVZJQ+O4SsnRzV3//g=='
+const keyBytes = Uint8Array.from([...atob(keyBase64)].map(ch => ch.charCodeAt(0)))
+console.log('key length:', keyBytes.length)
+const key = await crypto.subtle.importKey("raw",keyBytes,{name: "HMAC",hash: {name: "SHA-256"}},false,["sign", "verify"])
+
+const signBytes=await crypto.subtle.sign("HMAC", key, toSignBytes)
+// MUST NOT use TextDecoder() is it will change the bytes
+const sign64 = btoa(String.fromCharCode(...new Uint8Array(signBytes)))
+console.log(sign64)
+```
+
 ## Ruby
 
 ```ruby
