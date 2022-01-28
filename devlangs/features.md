@@ -22,10 +22,11 @@
 * dynamic type, not good for IDE & Factories, prefere infered type, unions and default/named params
 * bare multi-inheritance (C++), prefere interface, mixins, traits
 
-## Weird
+## Be curious
 
-* cross platform : same lang/std lib to multiple runtimes : JVM, CLR, Js
- * https://haxe.org : to multiple langs (js, java, c#, cpp, php, python, lua, nodejs), also swf bc and neko bc 
- * https://fantom.org : to JVM bc, then Js a bit of clr bc
- * https://ide.onelang.io/ transpiler 
- * https://github.com/pseudo-lang/pseudo transpiler of lang and stdlib to python, ruby, js, c#, go
+* cross platform : same lang/std lib to multiple runtimes : JVM, CLR, Js, ...
+  * https://haxe.org : to js, java, c#, cpp, php, python, lua, nodejs sources, also swf and neko bytecodes
+    * std lib to all targets : files, xml, json, http client, hashes, unicode, zip, sqlite ; ext libs on various targets
+  * https://fantom.org : to JVM and Js, no more CLR
+  * https://ide.onelang.io/ online transpiler of few code lines
+  * https://github.com/pseudo-lang/pseudo transpiler of lang and stdlib to python, ruby, js, c#, go
