@@ -18,8 +18,9 @@ Quick note on runtimes landscape:
 |netlify|.netlify.app|static, go, node|-||dyn relies on AWS Lambda|
 |vercel|.|static, go, node, python, ruby|-|github, gitlab, bitbucket|
 |google storage|.appspot.com|static|-||
-|google appengine|.appspot.com|node, go, dotnet, java, php, python, ruby|-|||
 |google firebase|.web.app|static|firebase||not sure firebase db is free|
+|google appengine|.appspot.com|node, go, dotnet, java, php, python, ruby|-|||
+|google cloudrun||Knative + builtin nodejs, python, go, java/kotlin/scala, dotnet||git||
 |azure app service|.azurewebsites.net|node, python, ruby, php, dotnet, java|cosmos db|pull:azure repos,github,bitbucket ; push:git, ftps, vs webdeploy, kudu API, online editor|linux and windows, 10 apps, 1GB|
 |repl.it|.repl.co|so many|prop KV|online ide|repl slow to start|
 |heroku|.herokuapp.com|go, java, node, php, python, ruby|pgsql, redis|git|uses dyno, not docker|
@@ -44,13 +45,27 @@ Very small units of code, pay per use :
 - IBM Apache OpenWhisk : js,swift,java,python,ruby,php,go,dotnet
 - Iron.io functions: go,rust,java,node,php,python,ruby, support AWS lambda
 
-### AppEngine
+### Google AppEngine
+
+allows bigger code than Functions
 
 - Standard env : historical one, runtimes within specific google isolation engine (not docker)
   - gen2 : python3 ,php7, java11, node, ruby, go
   - gen1 : python2, php5, java8
 - Flexible env : docker
   - python 2/3 ; php5/7 ; ruby, nodejs, java, go, dotnet core, custom
+
+### Google CloudRun
+
+As an always free tier
+
+Replacement of AppEngine or Google Kubernetes Engine ?
+
+Can directly deploy from source code without building a docker image : gcloud run deploy --source
+
+Uses same buildpacks (heroku based) as AppEngine and Functions : nodejs10, python3, go, java8,11/kotlin, dotnet core 3+
+
+based on Knative : a Kubernetes ++
 
 ### Azure
 
