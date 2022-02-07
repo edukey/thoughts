@@ -15,14 +15,14 @@ Quick note on runtimes landscape:
 |glitch|.glitch.me|static|-||
 |render|.onrender.com|static|-||
 |surge|.surge.sh|static|-||
-|netlify|.netlify.app|static, go, node|-||dyn relies on AWS Lambda|
+|netlify|.netlify.app|static|-||dyn relies on AWS Lambda|
 |vercel|.|static, go, node, python, ruby|-|github, gitlab, bitbucket|
 |google storage|.appspot.com|static|-||
 |google firebase|.web.app|static|firebase||not sure firebase db is free|
-|google appengine|.appspot.com|node, go, dotnet, java, php, python, ruby|-|||
-|google cloudrun||Knative + builtin nodejs, python, go, java/kotlin/scala, dotnet||git||
+|google appengine|.appspot.com|node, go, dotnet, java, php, python, ruby|-||24/7 run|
+|google cloudrun||Knative + builtin nodejs, python, go, java/kotlin/scala, dotnet||git|run on-demand|
 |azure app service|.azurewebsites.net|node, python, ruby, php, dotnet, java|cosmos db|pull:azure repos,github,bitbucket ; push:git, ftps, vs webdeploy, kudu API, online editor|linux and windows, 10 apps, 1GB|
-|repl.it|.repl.co|so many|prop KV|online ide|repl slow to start|
+|repl.it|.repl.co|so many|prop KV|online ide|run on-demand : slow to start|
 |heroku|.herokuapp.com|go, java, node, php, python, ruby|pgsql, redis|git|uses dyno, not docker|
 |cloudflare pages|.pages.dev|static|-|
 |cloudflare workers|.workers.dev|V8: js,wasm|prop KV|
