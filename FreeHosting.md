@@ -1,6 +1,8 @@
-# Free Hosting
+# Free Hosting of static files/code
 
-This hosts have free tiers usable for dev or small audience/usage
+This hosts works from source code (no need to build a container) and have free tiers usable for dev or small audience/usage.
+
+ex: AppEngine Flex, Cloud Run, Replit gets your code, then the engine get dependencies, build it and put it in a container under the hood.
 
 Quick note on runtimes landscape:
 - usually dynamic languages : nodejs, python, ruby, php ; perl only on oldies
