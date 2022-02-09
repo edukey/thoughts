@@ -5,21 +5,26 @@ This hosts works from source code (no need to build a container) and have free t
 ex: AppEngine Flex, Cloud Run, Replit gets your code, then the engine get dependencies, build it and put it in a container under the hood.
 
 Quick note on runtimes landscape:
-- usually dynamic languages : nodejs, python, ruby, php ; perl only on oldies
+- usually dynamic languages, no need for compilation : nodejs, python, ruby, php ; perl only on oldies
 - sometimes bytecodes languages : java ; dotnet (C#) supported also by big ones : google, aws, ibm
 - as native languages, golang is often present, less rust (iron.io), swift (ibm) or any c
 
-| host | domain | runtimes | dbs | push/pull files | remark |
+Deploy:
+- push: ftp, webdeploy (vs), git, cli/api, online ide, web upload
+- pull from: github, gitlab, bitbucket, ext git repo
+
+| host | domain | runtimes | dbs | deploy files | remark |
 |-|-|-|-|-|-|
 |github pages|.github.io|static|-|git, ide|
 |gitlab pages|.gitlab.io|static|-|git, ide|
 |bitbucket pages|.bitbucket.org|static|-|git, ide|
-|glitch|.glitch.me|static|-|run on-demand : slow start|
+|glitch|.glitch.me|static|-||run on-demand : slow start|
 |render|.onrender.com|static|-||
-|surge|.surge.sh|static|-||
+|surge|.surge.sh|static|-|npm|
 |netlify|.netlify.app|static|-||dyn relies on AWS Lambda|
-|vercel|.|static|-|github, gitlab, bitbucket|
-|vercel|.|go node python ruby|-|github, gitlab, bitbucket|
+|vercel|.vercel.app|static|-|github, gitlab, bitbucket|
+|vercel serverless|.|go node python ruby|-|github, gitlab, bitbucket|
+|vercel edge|.|v8 js/wasm|-|github, gitlab, bitbucket|
 |google storage|.appspot.com|static|-||
 |google firebase|.web.app|static|firebase||not sure firebase db is free|
 |google appengine std2|.appspot.com|nodejs go java php python ruby|-||24/7 run (gVisor)|
@@ -99,6 +104,10 @@ Requires credit card for registration
   - Kudu UI File/Zip upload (Windows only)
   - Kudu UI File editor ; App Service Editor (Windows only)
 - Shell via Kudu UI : Linux: SSH or run bash cmds ; Windows : CMD or PowerShell
+
+### Vercel
+
+servless function : nodejs as js or ts, 
 
 ### Cloudflare
 
