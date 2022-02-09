@@ -10,8 +10,8 @@ Quick note on runtimes landscape:
 - as native languages, golang is often present, less rust (iron.io), swift (ibm) or any c
 
 Deploy:
-- push: ftp, webdeploy (vs), git, cli/api, online ide, web upload
-- pull from: github, gitlab, bitbucket, ext git repo
+- push: ftp, ms-webdeploy, git, cli/api, online ide, web upload
+- pull from: github (gh), gitlab (gl), bitbucket (bb), ext git repo (egit)
 
 | host | domain | runtimes | dbs | deploy files | remark |
 |-|-|-|-|-|-|
@@ -22,23 +22,23 @@ Deploy:
 |render|.onrender.com|static|-||
 |surge|.surge.sh|static|-|npm|
 |netlify|.netlify.app|static|-||dyn relies on AWS Lambda|
-|vercel|.vercel.app|static|-|github, gitlab, bitbucket|
-|vercel serverless|.|go node python ruby|-|github, gitlab, bitbucket|
-|vercel edge|.|v8 js/wasm|-|github, gitlab, bitbucket|
+|vercel|.vercel.app|static|-|gh gl bb|
+|vercel serverless|.|go node py ruby|-|gh gl bb|
+|vercel edge|.|v8 js/wasm|-|gh gl bb|
 |google storage|.appspot.com|static|-||
 |google firebase|.web.app|static|firebase||not sure firebase db is free|
-|google appengine std2|.appspot.com|nodejs go java php python ruby|-||24/7 run (gVisor)|
-|google appengine flex|.appspot.com|nodejs go java php python ruby dotnetcore custom|-||24/7 run (docker)|
-|google cloudrun|.run.app|Knative + builtin nodejs python go java/kotlin/scala dotnet||git|run on-demand|
-|azure app service|.azurewebsites.net|nodejs python ruby php dotnet java|cosmos db|pull:azure repos,github,bitbucket ; push:git, ftps, vs webdeploy, kudu API, online editor|linux and windows, 10 apps, 1GB|
+|google appengine std2|.appspot.com|node go java php py ruby|-||24/7 run (gVisor)|
+|google appengine flex|.appspot.com|node go java php py ruby netcore custom|-||24/7 run (docker)|
+|google cloudrun|.run.app|Knative + builtin node py go java/kotlin/scala netcore||git|run on-demand|
+|azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|pull:azure repos,gh,bb ; push:git, ftps, webdeploy, api, edit|lin and win, 10 apps, 1GB|
 |repl.it|.repl.co|so many|prop KV|online ide|run on-demand : slow start|
-|heroku|.herokuapp.com|go java node php python ruby|pgsql redis|git|uses dyno, not docker, run on-demand : slow start|
+|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|uses dyno, not docker, run on-demand : slow start|
 |cloudflare pages|.pages.dev|static|-|
 |cloudflare workers|.workers.dev|V8: js,wasm|prop KV|
-|stackpath||static, go node php perl python wasm|-||
+|stackpath||static, go node php perl py wasm|-||
 |free.fr|.free.fr|php|mysql, pgsql|ftp|no https, shared websites|
 |000webhosts||php|mysql|ftp|1GB, shared websites|
-|freehostia||perl, php, python|mysql|ftp|shared websites|
+|freehostia||perl php py|mysql|ftp|shared websites|
 |awardspace||php|mysql|ftp|shared websites|
 
 Their are many other LAMP hosting : php/mysql style, using simple shared hosting and FTP to push files
