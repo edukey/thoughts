@@ -18,21 +18,21 @@ Deploy:
 |github pages|.github.io|static|-|git, ide|
 |gitlab pages|.gitlab.io|static|-|git, ide|
 |bitbucket pages|.bitbucket.org|static|-|git, ide|
-|glitch|.glitch.me|static|-||run on-demand : slow start|
+|glitch|.glitch.me|static|-|git|slow restart|
 |render|.onrender.com|static|-||
 |surge|.surge.sh|static|-|npm|
-|netlify|.netlify.app|static|-||dyn relies on AWS Lambda|
-|vercel|.vercel.app|static|-|gh gl bb|
-|vercel serverless|.|go node py ruby|-|gh gl bb|
-|vercel edge|.|v8 js/wasm|-|gh gl bb|
-|google storage|.appspot.com|static|-||
-|google firebase|.web.app|static|firebase||not sure firebase db is free|
+|netlify|.netlify.app|static|-|cli/api|dyn relies on AWS Lambda|
+|vercel|.vercel.app|static|-|gh gl bb cli/api|
+|vercel edge|.vercel.app|v8 js/wasm|-|gh gl bb cli/api|on same servers as static pages|
+|vercel serverless|.|go node py ruby|-|gh gl bb cli/api|
+|google storage|.appspot.com|static|-|cli/api|
+|google firebase|.web.app|static|firebase|cli/api|not sure firebase db is free|
 |google appengine std2|.appspot.com|node go java php py ruby|-||24/7 run (gVisor)|
 |google appengine flex|.appspot.com|node go java php py ruby netcore custom|-||24/7 run (docker)|
 |google cloudrun|.run.app|Knative + builtin node py go java/kotlin/scala netcore||git|run on-demand|
 |azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|pull:azure repos,gh,bb ; push:git, ftps, webdeploy, api, edit|lin and win, 10 apps, 1GB|
-|repl.it|.repl.co|so many|prop KV|online ide|run on-demand : slow start|
-|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|uses dyno, not docker, run on-demand : slow start|
+|repl.it|.repl.co|static 30+|prop KV|ide gh|very slow restart|
+|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|uses dyno, not docker, slow restart|
 |cloudflare pages|.pages.dev|static|-|
 |cloudflare workers|.workers.dev|V8: js,wasm|prop KV|
 |stackpath||static, go node php perl py wasm|-||
@@ -66,13 +66,16 @@ Very small units of code, pay per use :
 
 ### Google AppEngine
 
-Always run
+Always run : pay the sizing
+
+Always free : 1GB code+static, 5GB blobstore
+
 Quickly scale automatically
 
-- Standard env : specific google isolation engine : process sandbox
-  - gen2 : python3 ,php7, java11, node, ruby, go ; gVisor isolation, no constrains
-  - gen1 2008 : python2, php5, java8 ; isolated runtimes, api constrained
-- Flexible env : docker : python 2/3 ; php5/7 ; ruby, nodejs, java, go, dotnet core, custom
+- Standard env : google specific isolation engine at process level
+  - gen1 2008 : python2, php5, java8, go ; isolation by modified runtimes, api constrained : can use only google services via google libs
+  - gen2 : python3, php7, java11, go, node, ruby ; gVisor process isolation, no constrains
+- Flexible env : docker : python2/3, php5/7, java, go, node, ruby, netcore, custom
 
 ### Google CloudRun
 
@@ -107,7 +110,8 @@ Requires credit card for registration
 
 ### Vercel
 
-servless function : nodejs as js or ts, 
+- serverless functions running in AWS ?
+- edge functions running on vercel Edge servers, as V8 with limited lib (no file io) ; similar to cloudflare workers
 
 ### Cloudflare
 
@@ -127,11 +131,16 @@ Allows SPA and mobile apps to directly consume data by HTTP calls to Firebase db
 
 Provides free tier for static hosting.
 
-Also proposes to use Google functions (nodejs only) for small backend logic
+Also proposes to use Google functions (nodejs only) for small backend logic.
 
 ### Repl.it
 
-Many languages, but meant to be activated interactively
+for educational purposes : 35 languages, and also many libs/runtimes combinations
+
+html py jv node deno cpp c# c php clj bash ruby lua qbasic go rust r haskell swift kotlin dart vb elixir scala erlang julia ts raku(p6) apl f#
+nim crystal elisp tcl roy coffeescript forth
+
+slow start after inactivity
 
 ### Free.fr
 
