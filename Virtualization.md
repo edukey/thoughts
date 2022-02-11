@@ -29,12 +29,25 @@ This usually require to repackage (but not recompile) the application binaries t
 
 https://en.wikipedia.org/wiki/Application_virtualization, https://en.wikipedia.org/wiki/Operating-system-level_virtualization
 
-- Windows Desktop : Cameyo, Citrix XenApp, VMWare ThinApp, Symantec Workspace, MS App-V, Sandboxie, Spoon
-- Windows server : Citrix Xen, VxWorks
-- Linux : KVM, CoLinux, LXC
-- Docker Engine for Linux using KVM (namespaces, cgroups)
-- Docker Engine for windows using specially built new kernel features from win2016server
-- Bluestacks ?? mixing various levels of virtualization to be both performant and still complete
+- Windows
+  - Desktop : Cameyo, Citrix XenApp, VMWare ThinApp, Symantec Workspace, MS App-V, Sandboxie, Spoon
+  - Server : Citrix Xen, VxWorks
+  - WSLv1 : map linux syscalls to windows, deprecated (WSLv2 is a VM)
+  - Docker Engine for Windows : using specially built new kernel features from win2016server
+    - Win10/11 requires Hyper-V to get same kernel features as win2016
+  - Bluestacks ? Anroid emulator mixing various levels of virtualization to be both performant and still complete
+- Linux : 
+  - KVM, CoLinux, LXC
+  - tools to manage native OS configs as KVM (namespaces, cgroups), no runtime overcost
+    - runC (Docker, go)
+    - crun (Redhat, c),
+    - railcar, rkt : deprecated
+  - sandbox : isolation layer between app and OS, proxy the syscalls, runtime overcost
+    - gVisor (Google, go) used in Google AppEngine std gen2 and digitalocean
+    - nabla
+  - microVM
+    - kata
+    - firecraker (AWS)  
 - Solaris Zones
 
 ### can use other versions of core libraries
