@@ -64,6 +64,12 @@ Very small units of code, pay per use :
 - Kubernetes : multi purpose containers, deploy containers in clusters, autoscale, any protocol
 - Compute : VMs
 
+online cli/ide
+- cloud shell : a VM with 5GB home, shutdown after 20mins unused ; free tier : 50h/week
+- cloud shell editor : online ide, eclipse theia based (html ide based on vscode project)
+  - Feb2022 langs : html css less ; node js ts coffeescript py ruby perl php lua ; cs fs ps vb bat ; java clj groovy ; shell r go rust c cpp objc swift
+  - no kotlin or scala
+
 ### Google AppEngine
 
 Always run : pay the sizing
