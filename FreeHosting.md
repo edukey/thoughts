@@ -28,7 +28,7 @@ https://bejamas.io/discovery/hosting/
 |digitalocean app ptf|.ondigitalocean.app|gh gl egit dockhub|gatsby hugo next nuxt jekyll|above cloudflare, 3 free sites|
 |google storage|.appspot.com|cli/api|
 |google firebase|.web.app|cli/api||firestore 1GB free|
-|azure static web apps|?|?|gatsby hugo vue jekyll next nuxt|0.5GB|
+|azure static web apps|.azurestaticapps.net|?|gatsby hugo vue jekyll next nuxt|0.5GB|
 
 AWS has no always free service for static hosting with HTTPS, AWS Amplify is only 12mth free
 
