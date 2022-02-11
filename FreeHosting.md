@@ -16,16 +16,16 @@ https://bejamas.io/discovery/hosting/
 
 | host | domain | deploy files | jamstack | remark |
 |-|-|-|-|-|
-|github pages|.github.io|git, ide|
+|github pages|.github.io|git, ide|jekyll|
 |gitlab pages|.gitlab.io|git, ide|
 |bitbucket pages|.bitbucket.org|git, ide|
 |glitch|.glitch.me|git||slow restart|
-|render|.onrender.com||CDN 2018 AWS GCP|
+|render|.onrender.com|||CDN 2018 AWS GCP|
 |surge|.surge.sh|npm||
 |netlify|.netlify.app|cli/api|jamstack|2014 multi cloud|
 |vercel|.vercel.app|gh gl bb cli/api|jamstack|2015 on AWS GCP|
-|cloudflare pages|.pages.dev||CDN, own infra|
-|digitalocean app ptf||gh gl egit|gatsby hugo|above cloudflare, 3 free sites|
+|cloudflare pages|.pages.dev|||CDN, own infra|
+|digitalocean app ptf|.ondigitalocean.app|gh gl egit dockhub|gatsby hugo next nuxt jekyll|above cloudflare, 3 free sites|
 |google storage|.appspot.com|cli/api|
 |google firebase|.web.app|cli/api||not sure firebase db is free|
 |azure static web apps|?|?|gatsby hugo vue jekyll next nuxt|0.5GB|
@@ -53,7 +53,7 @@ Quick note on runtimes landscape:
 |heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|2007 uses dyno, not docker, slow restart|
 |google appengine std2|.appspot.com|node go java php py ruby|-||2018 4/7 run (gVisor)|
 |google appengine flex|.appspot.com|node go java php py ruby netcore custom|-||2016 - NO FREE TIER - 24/7 run (vm)|
-|google cloudrun|.run.app|Knative + builtin node py go java/kotlin/scala netcore||git|2019 run on-demand|
+|google cloudrun|.run.app|docker or node py go java/kotlin/scala netcore||git|2019 run on-demand|
 |azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|pull:azure repos,gh,bb ; push:git, ftps, webdeploy, api, edit|lin and win, 10 apps, 1GB|
 |repl.it|.repl.co|static 30+|prop KV|ide gh|very slow restart|
 |free.fr|.free.fr|php|mysql, pgsql|ftp|no https, shared websites|
