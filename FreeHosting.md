@@ -20,11 +20,12 @@ https://bejamas.io/discovery/hosting/
 |gitlab pages|.gitlab.io|git, ide|
 |bitbucket pages|.bitbucket.org|git, ide|
 |glitch|.glitch.me|git||slow restart|
-|render|.onrender.com||
+|render|.onrender.com||CDN 2018 AWS GCP|
 |surge|.surge.sh|npm||
-|netlify|.netlify.app|cli/api|jamstack|
-|vercel|.vercel.app|gh gl bb cli/api|jamstack|
-|cloudflare pages|.pages.dev||
+|netlify|.netlify.app|cli/api|jamstack|2014 multi cloud|
+|vercel|.vercel.app|gh gl bb cli/api|jamstack|2015 on AWS GCP|
+|cloudflare pages|.pages.dev||CDN, own infra|
+|digitalocean app ptf||gh gl egit|gatsby hugo|above cloudflare, 3 free sites|
 |google storage|.appspot.com|cli/api|
 |google firebase|.web.app|cli/api||not sure firebase db is free|
 |azure static web apps|?|?|gatsby hugo vue jekyll next nuxt|0.5GB|
@@ -44,22 +45,27 @@ Quick note on runtimes landscape:
 
 | host | domain | runtimes | dbs | deploy files | remark |
 |-|-|-|-|-|-|
-|cloudflare workers|.workers.dev|V8: js,wasm|prop KV|
+|cloudflare workers|.workers.dev|V8: js,wasm|prop KV|instant run|
 |vercel edge|.vercel.app|v8 js/wasm|-|gh gl bb cli/api|on same servers as static pages|
 |vercel serverless|.|go node py ruby|-|gh gl bb cli/api|
-|google appengine std2|.appspot.com|node go java php py ruby|-||24/7 run (gVisor)|
-|google appengine flex|.appspot.com|node go java php py ruby netcore custom|-||NO FREE TIER - 24/7 run (docker)|
-|google cloudrun|.run.app|Knative + builtin node py go java/kotlin/scala netcore||git|run on-demand|
+|stackpath||static, go node php perl py wasm|-||
+|render|.onrender.com||node py ruby rust go  elixir php|
+|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|2007 uses dyno, not docker, slow restart|
+|google appengine std2|.appspot.com|node go java php py ruby|-||2018 4/7 run (gVisor)|
+|google appengine flex|.appspot.com|node go java php py ruby netcore custom|-||2016 - NO FREE TIER - 24/7 run (vm)|
+|google cloudrun|.run.app|Knative + builtin node py go java/kotlin/scala netcore||git|2019 run on-demand|
 |azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|pull:azure repos,gh,bb ; push:git, ftps, webdeploy, api, edit|lin and win, 10 apps, 1GB|
 |repl.it|.repl.co|static 30+|prop KV|ide gh|very slow restart|
-|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|uses dyno, not docker, slow restart|
-|stackpath||static, go node php perl py wasm|-||
 |free.fr|.free.fr|php|mysql, pgsql|ftp|no https, shared websites|
 |000webhosts||php|mysql|ftp|1GB, shared websites|
 |freehostia||perl php py|mysql|ftp|shared websites|
 |awardspace||php|mysql|ftp|shared websites|
 
 Their are many other LAMP hosting : php/mysql style, using simple shared hosting and FTP to push files
+
+begin.com (2015) is more a framework above raw AWS to use it easily
+
+digitalocean.com (2012) : above CloudFlare CDN ; static has always free tier, not on apps : node py go ruby php on gvisor or docker
 
 ## Details
 
@@ -97,8 +103,8 @@ Always free : 1GB code+static, 5GB blobstore
 Quickly scale automatically
 
 - Standard env : google specific isolation engine at process level
-  - gen1 2008 : python2, php5, java8, go ; isolation by modified runtimes, api constrained : can use only google services via google libs
-  - gen2 : python3, php7, java11, go, node, ruby ; gVisor process isolation, no constrains
+  - gen1 2008beta 2011 : python2, php5, java8, go ; isolation by modified runtimes, api constrained : can use only google services via google libs
+  - gen2 2018 : python3, php7, java11, go, node, ruby ; gVisor process isolation, no constrains
 - Flexible env : docker : python2/3, php5/7, java, go, node, ruby, netcore, custom
 
 ### Google CloudRun
