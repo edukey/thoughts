@@ -30,9 +30,8 @@ https://bejamas.io/discovery/hosting/
 |google firebase|.web.app|cli/api||firestore 1GB free|
 |azure static web apps|.azurestaticapps.net|?|gatsby hugo vue jekyll next nuxt|0.5GB|
 
-AWS has no always free service for static hosting with HTTPS, AWS Amplify is only 12mth free
-
-Azure : ?
+- AWS has no always free service for static hosting with HTTPS, AWS Amplify is only 12mth free
+- Azure CDN .azureedge.net has no free tier
 
 ## Dynamic backend
 
