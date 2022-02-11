@@ -1,6 +1,39 @@
-# Free Hosting of static files/code
+# Free Hosting of Web pages/services
 
-This hosts works from source code (no need to build a container) and have free tiers usable for dev or small audience/usage.
+Hosting of web static pages or dynamic services in HTTPS
+- feeding from source code (no need to build a container or to provide a binary package)
+- having a always free tiers usable for dev or small audience/usage
+
+Deployment by:
+- push: ftp, ms-webdeploy, git, cli/api, online editor or ide, web upload
+- pull from: github (gh), gitlab (gl), bitbucket (bb), ext git repo (egit)
+
+## Static files
+
+Note that dynamic hosting can usually also do static files (ex: replit, appengine)
+
+https://bejamas.io/discovery/hosting/
+
+| host | domain | deploy files | jamstack | remark |
+|-|-|-|-|-|
+|github pages|.github.io|git, ide|
+|gitlab pages|.gitlab.io|git, ide|
+|bitbucket pages|.bitbucket.org|git, ide|
+|glitch|.glitch.me|git||slow restart|
+|render|.onrender.com||
+|surge|.surge.sh|npm||
+|netlify|.netlify.app|cli/api|jamstack|
+|vercel|.vercel.app|gh gl bb cli/api|jamstack|
+|cloudflare pages|.pages.dev||
+|google storage|.appspot.com|cli/api|
+|google firebase|.web.app|cli/api||not sure firebase db is free|
+|azure static web apps|?|?|gatsby hugo vue jekyll next nuxt|0.5GB|
+
+AWS has no always free service for static hosting with HTTPS
+
+Azure : ?
+
+## Dynamic backend
 
 ex: AppEngine Flex, Cloud Run, Replit gets your code, then the engine get dependencies, build it and put it in a container under the hood.
 
@@ -9,32 +42,17 @@ Quick note on runtimes landscape:
 - sometimes bytecodes languages : java ; dotnet (C#) supported also by big ones : google, aws, ibm
 - as native languages, golang is often present, less rust (iron.io), swift (ibm) or any c
 
-Deploy:
-- push: ftp, ms-webdeploy, git, cli/api, online ide, web upload
-- pull from: github (gh), gitlab (gl), bitbucket (bb), ext git repo (egit)
-
 | host | domain | runtimes | dbs | deploy files | remark |
 |-|-|-|-|-|-|
-|github pages|.github.io|static|-|git, ide|
-|gitlab pages|.gitlab.io|static|-|git, ide|
-|bitbucket pages|.bitbucket.org|static|-|git, ide|
-|glitch|.glitch.me|static|-|git|slow restart|
-|render|.onrender.com|static|-||
-|surge|.surge.sh|static|-|npm|
-|netlify|.netlify.app|static|-|cli/api|dyn relies on AWS Lambda|
-|vercel|.vercel.app|static|-|gh gl bb cli/api|
+|cloudflare workers|.workers.dev|V8: js,wasm|prop KV|
 |vercel edge|.vercel.app|v8 js/wasm|-|gh gl bb cli/api|on same servers as static pages|
 |vercel serverless|.|go node py ruby|-|gh gl bb cli/api|
-|google storage|.appspot.com|static|-|cli/api|
-|google firebase|.web.app|static|firebase|cli/api|not sure firebase db is free|
 |google appengine std2|.appspot.com|node go java php py ruby|-||24/7 run (gVisor)|
-|google appengine flex|.appspot.com|node go java php py ruby netcore custom|-||24/7 run (docker)|
+|google appengine flex|.appspot.com|node go java php py ruby netcore custom|-||NO FREE TIER - 24/7 run (docker)|
 |google cloudrun|.run.app|Knative + builtin node py go java/kotlin/scala netcore||git|run on-demand|
 |azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|pull:azure repos,gh,bb ; push:git, ftps, webdeploy, api, edit|lin and win, 10 apps, 1GB|
 |repl.it|.repl.co|static 30+|prop KV|ide gh|very slow restart|
 |heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|uses dyno, not docker, slow restart|
-|cloudflare pages|.pages.dev|static|-|
-|cloudflare workers|.workers.dev|V8: js,wasm|prop KV|
 |stackpath||static, go node php perl py wasm|-||
 |free.fr|.free.fr|php|mysql, pgsql|ftp|no https, shared websites|
 |000webhosts||php|mysql|ftp|1GB, shared websites|
