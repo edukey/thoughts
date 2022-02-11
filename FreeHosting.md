@@ -27,14 +27,16 @@ https://bejamas.io/discovery/hosting/
 |cloudflare pages|.pages.dev|||CDN, own infra|
 |digitalocean app ptf|.ondigitalocean.app|gh gl egit dockhub|gatsby hugo next nuxt jekyll|above cloudflare, 3 free sites|
 |google storage|.appspot.com|cli/api|
-|google firebase|.web.app|cli/api||not sure firebase db is free|
+|google firebase|.web.app|cli/api||firestore 1GB free|
 |azure static web apps|?|?|gatsby hugo vue jekyll next nuxt|0.5GB|
 
-AWS has no always free service for static hosting with HTTPS
+AWS has no always free service for static hosting with HTTPS, AWS Amplify is only 12mth free
 
 Azure : ?
 
 ## Dynamic backend
+
+https://free-for.dev/#/?id=major-cloud-providers
 
 ex: AppEngine Flex, Cloud Run, Replit gets your code, then the engine get dependencies, build it and put it in a container under the hood.
 
@@ -45,17 +47,23 @@ Quick note on runtimes landscape:
 
 | host | domain | runtimes | dbs | deploy files | remark |
 |-|-|-|-|-|-|
-|cloudflare workers|.workers.dev|V8: js,wasm|prop KV|instant run|
+|cloudflare workers|.workers.dev|V8: js,wasm|prop KV|instant run, 100k req/day|
 |vercel edge|.vercel.app|v8 js/wasm|-|gh gl bb cli/api|on same servers as static pages|
 |vercel serverless|.|go node py ruby|-|gh gl bb cli/api|
 |stackpath||static, go node php perl py wasm|-||
 |render|.onrender.com||node py ruby rust go  elixir php|
-|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|2007 uses dyno, not docker, slow restart|
-|google appengine std2|.appspot.com|node go java php py ruby|-||2018 4/7 run (gVisor)|
+|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|2007 dyno, slow restart, 500h/mth free|
+|fly app||go node deno python ruby elixir docker|pgsql|cli|2Kh/mth 3GBdisk, pgsql not free|
+|google appengine std2|.appspot.com|node go java php py ruby|-||2018 4/7 run (gVisor), 28h/day free|
 |google appengine flex|.appspot.com|node go java php py ruby netcore custom|-||2016 - NO FREE TIER - 24/7 run (vm)|
-|google cloudrun|.run.app|docker or node py go java/kotlin/scala netcore||git|2019 run on-demand|
+|google cloudrun|.run.app|docker or node py go java/kotlin/scala netcore||git|2019 run on-demand, 2M rq/mth free|
+|google func||node py ruby php go java dotnet|||2M rq/mth free|
+|aws lambda|||||1M rq/mth free|
+|azure func|||||1M rq/mth free|
+|ibm func|||||5M rq/mth free|
 |azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|pull:azure repos,gh,bb ; push:git, ftps, webdeploy, api, edit|lin and win, 10 apps, 1GB|
 |repl.it|.repl.co|static 30+|prop KV|ide gh|very slow restart|
+|deta.sh micros||node python|||linux vm 250mb files/code|
 |free.fr|.free.fr|php|mysql, pgsql|ftp|no https, shared websites|
 |000webhosts||php|mysql|ftp|1GB, shared websites|
 |freehostia||perl php py|mysql|ftp|shared websites|
@@ -67,16 +75,31 @@ begin.com (2015) is more a framework above raw AWS to use it easily
 
 digitalocean.com (2012) : above CloudFlare CDN ; static has always free tier, not on apps : node py go ruby php on gvisor or docker
 
+Oracle Functions (Fn based) has no always free tier
+
+## Database
+
+Firestore 1GB
+Azure CosmosDB 5GB
+Azure Storage 5GB
+
 ## Details
 
 ### Functions
 
 Very small units of code, pay per use : 
-- Azure Functions : C#, F#, powershell, java, node, python, custom (go, rust, ...)
+- Azure Functions : C#, F#, powershell, java/kotlin, node, python, custom (go, rust, ...)
+  - built above Azure App Service :  _project_.azurewebsites.net/api/_function_
 - AWS Lambda : nodejs, python, ruby, java, go, dotnet, custom docker
 - Google Functions : go, node, python, php, ruby, java, dotnet
 - IBM Apache OpenWhisk : js,swift,java,python,ruby,php,go,dotnet
 - Iron.io functions: go,rust,java,node,php,python,ruby, support AWS lambda
+- Oracle function : Fn based
+
+Google Function Java : source code maven buildable or pre-built fat JAR
+Google Function Dotnet (netcore3) : only C#, F#, VB with msbuild csproj/fsproj/vbproj files with nuget libs deps ; does not accept prebuilt binary
+Azure Function Java/Kotlin : ad-hoc extensions in maven, gradle, intellij, vscode to build a zip sent to azure
+Azure Function custom (Go, Rust) : build locally with vscode a linux/win binary being a http server, then deploy to azure
 
 ### Google layers
 
