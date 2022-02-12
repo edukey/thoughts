@@ -1,11 +1,11 @@
 # Free Hosting of Web pages/services
 
-Hosting of web static pages or dynamic services in HTTPS
+Hosting of web static pages or dynamic services in HTTPS:
 - feeding from source code (no need to build a container or to provide a binary package)
-- having a always free tiers usable for dev or small audience/usage
+- having a always free tier (not only a trial) usable for testing or small audience/usage
 
-Deployment by:
-- push: ftp, ms-webdeploy, git, cli/api, online editor or ide, web upload
+Deployment of files/code by:
+- push: ftp, ms-webdeploy, git, ad-hoc cli/api, online editor/ide, upload web ui
 - pull from: github (gh), gitlab (gl), bitbucket (bb), ext git repo (egit)
 
 ## Static files
@@ -39,38 +39,45 @@ https://free-for.dev/#/?id=major-cloud-providers
 
 ex: AppEngine Flex, Cloud Run, Replit gets your code, then the engine get dependencies, build it and put it in a container under the hood.
 
-Quick note on runtimes landscape:
+Quota for free tier:
+- as disk space : MB, GB
+- as requests per period : rq/day, rq/mth
+- as network bandwidth per period : bw/day, bw/mth
+- as duration of compute per period : hr/day, hr/mth
+- as mem usage per period (vercel) : GB-hr/mth ; 1 GB-hr = 3600 req of 1 sec consuming 1GB each ; usual function duration is 100ms
+
+Runtimes landscape:
 - usually dynamic languages, no need for compilation : nodejs, python, ruby, php ; perl only on oldies
 - sometimes bytecodes languages : java ; dotnet (C#) supported also by big ones : google, aws, ibm
 - as native languages, golang is often present, less rust (iron.io), swift (ibm) or any c
 
-| host | domain | runtimes | dbs | deploy files | remark |
-|-|-|-|-|-|-|
-|cloudflare workers|.workers.dev|V8: js,wasm|prop KV|instant run, 100k req/day|
-|vercel edge|.vercel.app|v8 js/wasm|-|gh gl bb cli/api|on same servers as static pages|
-|vercel serverless|.|go node py ruby|-|gh gl bb cli/api|
-|stackpath||static, go node php perl py wasm|-||
-|render|.onrender.com||node py ruby rust go  elixir php|
-|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|2007 dyno, slow restart, 500h/mth free|
-|fly app||go node deno python ruby elixir docker|pgsql|cli|2Kh/mth 3GBdisk, pgsql not free|
-|google appengine std2|.appspot.com|node go java php py ruby|-||2018 4/7 run (gVisor), 28h/day free|
-|google appengine flex|.appspot.com|node go java php py ruby netcore custom|-||2016 - NO FREE TIER - 24/7 run (vm)|
-|google cloudrun|.run.app|docker or node py go java/kotlin/scala netcore||git|2019 run on-demand, 2M rq/mth free|
-|google func||node py ruby php go java dotnet|||2M rq/mth free|
-|aws lambda|||||1M rq/mth free|
-|azure func|||||1M rq/mth free|
-|ibm func|||||5M rq/mth free|
-|azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|pull:azure repos,gh,bb ; push:git, ftps, webdeploy, api, edit|lin and win, 10 apps, 1GB|
-|repl.it|.repl.co|static 30+|prop KV|ide gh|very slow restart|
-|deta.sh micros||node python|||linux vm 250mb files/code|
-|free.fr|.free.fr|php|mysql, pgsql|ftp|no https, shared websites|
-|000webhosts||php|mysql|ftp|1GB, shared websites|
-|freehostia||perl php py|mysql|ftp|shared websites|
-|awardspace||php|mysql|ftp|shared websites|
+| host | domain | runtimes | dbs | deploy files | free | remark |
+|-|-|-|-|-|-|-|
+|cloudflare workers|.workers.dev|v8 js/wasm|prop KV||100K rq/day|instant run|
+|vercel edge|.vercel.app|v8 js/wasm|-|gh gl bb cli/api|3Grq/mth|on same servers as static pages|
+|vercel serverless|.|go node py ruby|-|gh gl bb cli/api|100GB bw/mth, 100GB-hr/mth|
+|stackpath||static, go node php perl py wasm|-|||
+|render|.onrender.com|node py ruby rust go elixir php||
+|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|500h/mth free||2007 dyno, slow restart|
+|fly app||go node deno python ruby elixir docker|pgsql|cli|2Kh/mth 3GBdisk, pgsql not free||
+|google appengine std2|.appspot.com|node go java php py ruby|-||28h/day|2018 4/7 run (gVisor)|
+|google appengine flex|.appspot.com|docker ; node go java php py ruby netcore|-||NO FREE TIER|2016 24/7 run (vm)|
+|google cloudrun|.run.app|docker ; node py go java/kotlin/scala netcore||git|2M rq/mth|2019 run on-demand|
+|google func||node py ruby php go java dotnet|||2M rq/mth|
+|aws lambda|||||1M rq/mth|
+|azure func|.azurewebsites.net||||1M rq/mth|
+|ibm func|||||5M rq/mth|
+|azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|azure repos gh bb git ftps webdeploy cli/api edit|10 apps, 1GB|lin and win|
+|repl.it|.repl.co|static 30+|prop KV|ide gh||very slow restart|
+|deta.sh micros||node python|||250MB files/code|linux vm|
+|free.fr|.free.fr|php|mysql, pgsql|ftp||no https, shared websites|
+|000webhosts||php|mysql|ftp|1GB|shared websites|
+|freehostia||perl php py|mysql|ftp||shared websites|
+|awardspace||php|mysql|ftp||shared websites|
 
-- There are many other LAMP hosting : php/mysql style, using simple shared hosting and FTP to push files
-- begin.com (2015) is more a framework above raw AWS to use it easily
-- digitalocean.com (2012) : above CloudFlare CDN ; static has always free tier, not on apps : node py go ruby php on gvisor or docker
+- There are many other traditional php/mysql hosting, using simple shared hosting and FTP to push files
+- begin.com (2015) is more a framework above raw AWS to use it easily, you have to allocate your AWS resources
+- digitalocean.com (2012) : above CloudFlare CDN ; static has always free tier, not on apps : node py go ruby php on gvisor, or docker
 - Oracle Functions (Fn based) has no always free tier
 - AWS Elastic Beanstalk : Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker over Apache, Nginx, Passenger, and IIS ; pay only needed EC2 instances
 
@@ -160,8 +167,14 @@ Requires credit card for registration
 
 ### Vercel
 
-- serverless functions running in AWS ?
+- max 15000 files per deployment, build time <45min
 - edge functions running on vercel Edge servers, as V8 with limited lib (no file io) ; similar to cloudflare workers
+- serverless functions running as AWS Lambda
+  - no websocket, http2/push, response streaming
+  - functions zip must be < 50MB and <250MB unzipped
+  - function timeout before first reply : 5 sec, proxied request 30 sec
+  - response < 5MB
+- https://vercel.com/docs/concepts/limits/overview
 
 ### Cloudflare
 
