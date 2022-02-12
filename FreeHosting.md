@@ -82,23 +82,25 @@ Runtimes landscape:
 
 "docker" here may also mean "any linux binary in proper arch (arm or amd)" (should split docker and linux bin?)
 
+AWS Lambda has a "runtime API" to run any linux binary, so usable with php, f#, rust, binary has to call web api endpoint to get next request, then set its response
+
 | runtime | nb | google | azure | aws | others
 |-|-|-|-|-|-|
-| node   | 18 | gae2 gaef gcr gf | aas af | aeb al | heroku deta d.ocean repl.it fly render s.path vercel.func vercel.edge cloudflare
-| python | 16 | gae2 gaef gcr gf | aas af | aeb al | heroku deta d.ocean repl.it fly render s.path vercel.func
-| go     | 13 | gae2 gaef gcr gf | - | aeb al | heroku d.ocean repl.it fly render s.path vercel.func
-| ruby   | 12 | gae2 gaef - gf | aas - | aeb al | heroku d.ocean repl.it fly render vercel.func
-| php    | 10 | gae2 gaef - gf | aas - |aeb - | heroku d.ocean repl.it render s.path
+| node   | 18 | gae2 gaef gcr gf | aas af | aeb al | heroku d.ocean repl.it render fly vercel.func s.path deta vercel.edge cloudflare
+| python | 16 | gae2 gaef gcr gf | aas af | aeb al | heroku d.ocean repl.it render fly vercel.func s.path deta 
+| go     | 13 | gae2 gaef gcr gf |  -   - | aeb al | heroku d.ocean repl.it render fly vercel.func s.path
+| ruby   | 12 | gae2 gaef   - gf | aas  - | aeb al | heroku d.ocean repl.it render fly vercel.func
+| php    | 10 | gae2 gaef   - gf | aas  - | aeb  - | heroku d.ocean repl.it render s.path
 | java   | 10 | gae2 gaef gcr gf | aas af | aeb al | heroku repl.it
-| dotnet c# | 7 | - gaef gcr gf | aas - | aeb al | repl.it
-| docker | 6 | - gaef gcr - | - | aeb al | d.ocean fly
-| wasm | 3 | - | - | - |  s.path vercel.edge cloudflare
-| f#     | 3 | - | aas af | - | repl.it
-| powershell | 2 | - | aas af | - | repl.it
-| elixir | 2 | - | - | - | fly render repl.it
-| rust   | 2 | - | - | - | render repl.it
-| deno   | 2 | - | - | - | fly repl.it
-| perl   | 2 | - | - | - | s.path repl.it
+| dotnet c# | 7 |  - gaef gcr gf | aas  - | aeb al | repl.it
+| docker  | 6 |    - gaef gcr  - |  -   - | aeb al | d.ocean fly
+| p.shell | 4 | - | aas af | - al | repl.it
+| f#      | 3 | - | aas af | -  - | repl.it
+| wasm    | 3 | - | - | - | s.path vercel.edge cloudflare
+| elixir  | 3 | - | - | - | fly render repl.it
+| rust    | 2 | - | - | - | render repl.it
+| deno    | 2 | - | - | - | fly repl.it
+| perl    | 2 | - | - | - | s.path repl.it
 
 ## Traditional web hosting
 
