@@ -78,6 +78,28 @@ Runtimes landscape:
 
 - begin.com (2015) is more a framework above raw AWS to use it easily, you have to allocate your AWS resources
 
+## Per Runtimes
+
+"docker" here may also mean "any linux binary in proper arch (arm or amd)" (should split docker and linux bin?)
+
+| runtime | google | azure | aws | others
+|-|-|-|-|-|
+| node   | gae2 gaef gcr gf | aas af | aeb al | heroku deta d.ocean repl.it fly render s.path vercel.func vercel.edge cloudflare
+| python | gae2 gaef gcr gf | aas af | aeb al | heroku deta d.ocean repl.it fly render s.path vercel.func
+| ruby   | gae2 gaef - gf | aas - | aeb al | heroku d.ocean repl.it fly render vercel.func
+| php    | gae2 gaef - gf | aas - |aeb - | heroku d.ocean repl.it render s.path
+| java   | gae2 gaef gcr gf | aas af | aeb al | heroku repl.it
+| dotnet c# | - gaef gcr gf | aas - | aeb al | repl.it
+| go     | gae2 gaef gcr gf | - | aeb al | heroku d.ocean repl.it fly render s.path vercel.func
+| docker | - gaef gcr - | - | aeb al | d.ocean fly
+| wasm | - | - | - |  s.path vercel.edge cloudflare
+| f#     | - | aas af | - | repl.it
+| powershell | - | aas af | - | repl.it
+| elixir | - | - | - | fly render repl.it
+| rust   | - | - | - | render repl.it
+| deno   | - | - | - | fly repl.it
+| perl   | - | - | - | s.path repl.it
+
 ## Traditional web hosting
 
 Mainly the PHP/MySQL combo on shared websites, pushed by FTP.
