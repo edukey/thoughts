@@ -82,23 +82,23 @@ Runtimes landscape:
 
 "docker" here may also mean "any linux binary in proper arch (arm or amd)" (should split docker and linux bin?)
 
-| runtime | google | azure | aws | others
-|-|-|-|-|-|
-| node   | gae2 gaef gcr gf | aas af | aeb al | heroku deta d.ocean repl.it fly render s.path vercel.func vercel.edge cloudflare
-| python | gae2 gaef gcr gf | aas af | aeb al | heroku deta d.ocean repl.it fly render s.path vercel.func
-| ruby   | gae2 gaef - gf | aas - | aeb al | heroku d.ocean repl.it fly render vercel.func
-| php    | gae2 gaef - gf | aas - |aeb - | heroku d.ocean repl.it render s.path
-| java   | gae2 gaef gcr gf | aas af | aeb al | heroku repl.it
-| dotnet c# | - gaef gcr gf | aas - | aeb al | repl.it
-| go     | gae2 gaef gcr gf | - | aeb al | heroku d.ocean repl.it fly render s.path vercel.func
-| docker | - gaef gcr - | - | aeb al | d.ocean fly
-| wasm | - | - | - |  s.path vercel.edge cloudflare
-| f#     | - | aas af | - | repl.it
-| powershell | - | aas af | - | repl.it
-| elixir | - | - | - | fly render repl.it
-| rust   | - | - | - | render repl.it
-| deno   | - | - | - | fly repl.it
-| perl   | - | - | - | s.path repl.it
+| runtime | nb | google | azure | aws | others
+|-|-|-|-|-|-|
+| node   | 18 | gae2 gaef gcr gf | aas af | aeb al | heroku deta d.ocean repl.it fly render s.path vercel.func vercel.edge cloudflare
+| python | 16 | gae2 gaef gcr gf | aas af | aeb al | heroku deta d.ocean repl.it fly render s.path vercel.func
+| go     | 13 | gae2 gaef gcr gf | - | aeb al | heroku d.ocean repl.it fly render s.path vercel.func
+| ruby   | 12 | gae2 gaef - gf | aas - | aeb al | heroku d.ocean repl.it fly render vercel.func
+| php    | 10 | gae2 gaef - gf | aas - |aeb - | heroku d.ocean repl.it render s.path
+| java   | 10 | gae2 gaef gcr gf | aas af | aeb al | heroku repl.it
+| dotnet c# | 7 | - gaef gcr gf | aas - | aeb al | repl.it
+| docker | 6 | - gaef gcr - | - | aeb al | d.ocean fly
+| wasm | 3 | - | - | - |  s.path vercel.edge cloudflare
+| f#     | 3 | - | aas af | - | repl.it
+| powershell | 2 | - | aas af | - | repl.it
+| elixir | 2 | - | - | - | fly render repl.it
+| rust   | 2 | - | - | - | render repl.it
+| deno   | 2 | - | - | - | fly repl.it
+| perl   | 2 | - | - | - | s.path repl.it
 
 ## Traditional web hosting
 
