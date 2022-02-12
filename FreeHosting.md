@@ -68,13 +68,11 @@ Quick note on runtimes landscape:
 |freehostia||perl php py|mysql|ftp|shared websites|
 |awardspace||php|mysql|ftp|shared websites|
 
-Their are many other LAMP hosting : php/mysql style, using simple shared hosting and FTP to push files
-
-begin.com (2015) is more a framework above raw AWS to use it easily
-
-digitalocean.com (2012) : above CloudFlare CDN ; static has always free tier, not on apps : node py go ruby php on gvisor or docker
-
-Oracle Functions (Fn based) has no always free tier
+- There are many other LAMP hosting : php/mysql style, using simple shared hosting and FTP to push files
+- begin.com (2015) is more a framework above raw AWS to use it easily
+- digitalocean.com (2012) : above CloudFlare CDN ; static has always free tier, not on apps : node py go ruby php on gvisor or docker
+- Oracle Functions (Fn based) has no always free tier
+- AWS Elastic Beanstalk : Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker over Apache, Nginx, Passenger, and IIS ; pay only needed EC2 instances
 
 ## Database
 
