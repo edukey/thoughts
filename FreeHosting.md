@@ -33,11 +33,13 @@ https://bejamas.io/discovery/hosting/
 - AWS has no always free service for static hosting with HTTPS, AWS Amplify is only 12mth free
 - Azure CDN .azureedge.net has no free tier
 
-## Dynamic backend
+## Serverless
+
+Support multiple languages running in constrained env (VM / Docker / gVisor / restricted runtime) in pay per use.
+The engine gets your code somehow (push/pull), retrieve dependencies, build it and put it in a container under the hood.
+When in VM/Docker context, you may have shell access to one of the instance (ex: azure app svc, repl.it).
 
 https://free-for.dev/#/?id=major-cloud-providers
-
-ex: AppEngine Flex, Cloud Run, Replit gets your code, then the engine get dependencies, build it and put it in a container under the hood.
 
 Quota for free tier:
 - as disk space : MB, GB
@@ -51,35 +53,41 @@ Runtimes landscape:
 - sometimes bytecodes languages : java ; dotnet (C#) supported also by big ones : google, aws, ibm
 - as native languages, golang is often present, less rust (iron.io), swift (ibm) or any c
 
-| host | domain | runtimes | dbs | deploy files | free | remark |
-|-|-|-|-|-|-|-|
-|cloudflare workers|.workers.dev|v8 js/wasm|prop KV||100K rq/day|instant run|
-|vercel edge|.vercel.app|v8 js/wasm|-|gh gl bb cli/api|3Grq/mth|on same servers as static pages|
+| host | domain | runtimes | dbs | deploy | free | trial | remark |
+|-|-|-|-|-|-|-|-|
+|cloudflare workers|.workers.dev|v8 js/wasm|prop KV||100K rq/day||instant run|
+|vercel edge|.vercel.app|v8 js/wasm|-|gh gl bb cli/api|3Grq/mth||on same servers as static pages|
 |vercel serverless|.|go node py ruby|-|gh gl bb cli/api|100GB bw/mth, 100GB-hr/mth|
 |stackpath||static, go node php perl py wasm|-|||
 |render|.onrender.com|node py ruby rust go elixir php||
-|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|500h/mth free||2007 dyno, slow restart|
 |fly app||go node deno python ruby elixir docker|pgsql|cli|2Kh/mth 3GBdisk, pgsql not free||
-|google appengine std2|.appspot.com|node go java php py ruby|-||28h/day|2018 4/7 run (gVisor)|
-|google appengine flex|.appspot.com|docker ; node go java php py ruby netcore|-||NO FREE TIER|2016 24/7 run (vm)|
-|google cloudrun|.run.app|docker ; node py go java/kotlin/scala netcore||git|2M rq/mth|2019 run on-demand|
+|repl.it|.repl.co|static 30+|prop KV|ide gh|||very slow restart|
+|deta.sh micros||node python|||250MB files/code||linux vm|
+|heroku|.herokuapp.com|go java node php py ruby|pgsql redis|git|500h/mth||2007 dyno, slow restart|
+|digitalocean||node py go ruby php ; docker|||NO FREE TIER||2012 gVisor|
+|google appengine std2|.appspot.com|node go java php py ruby|-||28h/day||2018 24/7 gVisor|
+|google appengine flex|.appspot.com|docker ; node go java php py ruby netcore|-||NO FREE TIER||2016 24/7 run (vm)|
+|google cloudrun|.run.app|docker ; node py go java/kotlin/scala netcore||git|2M rq/mth||2019 run on-demand|
+|azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|azure repos gh bb git ftps webdeploy cli/api edit|10 apps, 1GB||lin and win|
+|aws elastic beanstalk||node py php ruby go java dotnet ; docker|||NO FREE TIER||pay your EC2 instances, use web servers : apache nginx iis passenger|
+|aws lambda||node py ruby go java dotnet ps1 custom|||1M rq/mth|||
 |google func||node py ruby php go java dotnet|||2M rq/mth|
-|aws lambda|||||1M rq/mth|
 |azure func|.azurewebsites.net||||1M rq/mth|
 |ibm func|||||5M rq/mth|
-|azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|azure repos gh bb git ftps webdeploy cli/api edit|10 apps, 1GB|lin and win|
-|repl.it|.repl.co|static 30+|prop KV|ide gh||very slow restart|
-|deta.sh micros||node python|||250MB files/code|linux vm|
+|oracle fun|||||NO FREE TIER|based on Fn|
+
+- begin.com (2015) is more a framework above raw AWS to use it easily, you have to allocate your AWS resources
+
+## Traditional web hosting
+
+Mainly the PHP/MySQL combo on shared websites, pushed by FTP.
+
+| host | domain | runtimes | dbs | deploy files | free | remark |
+|-|-|-|-|-|-|-|
 |free.fr|.free.fr|php|mysql, pgsql|ftp||no https, shared websites|
 |000webhosts||php|mysql|ftp|1GB|shared websites|
 |freehostia||perl php py|mysql|ftp||shared websites|
 |awardspace||php|mysql|ftp||shared websites|
-
-- There are many other traditional php/mysql hosting, using simple shared hosting and FTP to push files
-- begin.com (2015) is more a framework above raw AWS to use it easily, you have to allocate your AWS resources
-- digitalocean.com (2012) : above CloudFlare CDN ; static has always free tier, not on apps : node py go ruby php on gvisor, or docker
-- Oracle Functions (Fn based) has no always free tier
-- AWS Elastic Beanstalk : Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker over Apache, Nginx, Passenger, and IIS ; pay only needed EC2 instances
 
 ## Database
 
