@@ -141,7 +141,9 @@ Small units of code, supposed to run in 100ms, pay per use :
 - Oracle function (Fn based) : node python ruby java go [list](https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/languagessupportedbyfunctions.htm)
 - Iron.io functions: go,rust,java,node,php,python,ruby, support AWS lambda
 
-### Google layers
+### Google
+
+#### Layers
 
 - Firebase : no server logic, just clients and database
 - Functions : HTTP/Event small logic, deploy code, pay per use, autoscale, constrained runtime, warning on too much functions, no persistence
@@ -157,7 +159,7 @@ online cli/ide
   - Feb2022 langs : html css less ; node js ts coffeescript py ruby perl php lua ; cs fs ps vb bat ; java clj groovy ; shell r go rust c cpp objc swift
   - no kotlin or scala
 
-### Google AppEngine
+#### AppEngine
 
 Always run : pay the sizing
 
@@ -172,7 +174,7 @@ Quickly scale automatically
   - can spawn threads/processes
   - websockets ok
 
-### Google CloudRun
+#### CloudRun
 
 As an always free tier
 Run on-demand, but very fast
@@ -185,6 +187,12 @@ Uses same buildpacks (heroku based) as AppEngine and Functions : nodejs10, pytho
 based on Knative : a Kubernetes for serverless : pay per use
 
 note : GKE requires effort to expose HTTPS
+
+### Amazon
+
+#### Elastic Beanstalk
+
+Provision an Elastic LoadBalancer and pre-configured EC2 VM instances (linux or windows) and deploy web apps using reverse proxy (nginx, apache, passenger, iis)
 
 ### Azure
 
