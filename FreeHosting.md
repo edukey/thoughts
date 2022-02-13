@@ -68,7 +68,7 @@ Runtimes landscape:
 |google appengine std2|.appspot.com|node go java php py ruby|-||28h/day||2018 24/7 gVisor|
 |google appengine flex|.appspot.com|docker ; node go java php py ruby netcore|-||NO FREE TIER||2016 24/7 run (vm)|
 |google cloudrun|.run.app|docker ; node py go java/kotlin netcore||git|2M rq/mth||2019 run on-demand|
-|azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|azure repos gh bb git ftps webdeploy cli/api edit|10 apps, 1GB||lin and win|
+|azure app service|.azurewebsites.net|node py ruby php dotnet java ; docker|cosmos db|azure repos gh bb git ftps webdeploy cli/api edit|10 apps, 1GB||lin and win|
 |aws elastic beanstalk||node py php ruby go java dotnet ; docker|||NO FREE TIER||pay your EC2 instances, use web servers : apache nginx iis passenger|
 |aws lambda||node py ruby go java dotnet ps1 custom|||1M rq/mth|||
 |google func||node py ruby php go java dotnet|||2M rq/mth|
@@ -80,9 +80,10 @@ Runtimes landscape:
 
 ## Per Languages
 
-"docker" here may also mean "any linux binary in proper arch (arm or amd)" (should split docker and linux bin?)
-
-AWS Lambda has a "runtime API" to run any linux binary, so usable with php, f#, rust, binary has to call web api endpoint to get next request, then set its response
+- "docker" : some ptf let you provide a docker image as long as it fits some requirements
+- "custom" : provide some kind of binary matching requirements (os/arch) alongs ad-hoc config file
+  - ex: AWS Lambda has a "runtime API" to run any linux binary, so usable with php, f#, rust, binary has to call web api endpoint to get next request, then set its response
+  - ex: Azure Function let you provide a binary working as a web server
 
 | runtime | nb | google | azure | aws | bigs | others
 |-|-|-|-|-|-|-|
@@ -92,11 +93,11 @@ AWS Lambda has a "runtime API" to run any linux binary, so usable with php, f#, 
 | ruby   | 14 | gae2 gaef   - gf | aas  - | aeb al | ibm ora | heroku d.ocean repl.it render fly vercel.func
 | java   | 12 | gae2 gaef gcr gf | aas af | aeb al | ibm ora | heroku repl.it
 | php    | 11 | gae2 gaef   - gf | aas  - | aeb  - | ibm   - | heroku d.ocean repl.it render s.path
+| docker/custom | 9 |    - gaef gcr  - | aas  af | aeb al | ibm   - | d.ocean fly
 | dotnet c# | 8 |  - gaef gcr gf | aas af | aeb al | ibm   - | repl.it
-| docker  | 7 |    - gaef gcr  - |  -   - | aeb al | ibm   - | d.ocean fly
 | p.shell | 4 | - | aas af | - al | - | repl.it
-| kotlin  | 3 | gcr | af | - | repl.it
 | f#      | 3 | - | aas af | -  - | - | repl.it
+| kotlin  | 3 | gcr | af | - | repl.it
 | wasm    | 3 | - | - | - | - | s.path vercel.edge cloudflare
 | elixir  | 3 | - | - | - | - | fly render repl.it
 | rust    | 2 | - | - | - | - | render repl.it
@@ -129,7 +130,7 @@ Small units of code, supposed to run in 100ms, pay per use :
 - Azure Functions : C#, F#, powershell, java/kotlin, node, python, custom (go, rust, ...)
   - built above Azure App Service :  _project_.azurewebsites.net/api/_function_
   - Java/Kotlin : ad-hoc extensions in maven, gradle, intellij, vscode to build a zip sent to azure
-  - custom (Go, Rust) : build locally with vscode a linux/win binary being a http server, then deploy to azure
+  - custom (Go, Rust) : build locally with vscode a linux/win binary being a http server, then deploy to azure [doc](https://docs.microsoft.com/en-us/azure/azure-functions/functions-custom-handlers)
 - AWS Lambda : nodejs, python, ruby, java, go, dotnet, custom docker
   - custom : binary must call a local HTTP API to get next request and to put a response
 - Google Functions : go, node, python, php, ruby, java, dotnet
@@ -191,7 +192,7 @@ note : GKE requires effort to expose HTTPS
 
 Requires credit card for registration
 
-- Runtimes : node, python, ruby, php, dotnet, java
+- Runtimes : node, python, ruby, php, dotnet, java ; [docker](https://docs.microsoft.com/en-us/azure/app-service/quickstart-custom-container)
 - Db : cosmosdb has a free tiers
 - OSes : Linux or Windows, Windows is more feature rich
 - Deploy :
