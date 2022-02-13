@@ -72,9 +72,9 @@ Runtimes landscape:
 |aws elastic beanstalk||node py php ruby go java dotnet ; docker|||NO FREE TIER||pay your EC2 instances, use web servers : apache nginx iis passenger|
 |aws lambda||node py ruby go java dotnet ps1 custom|||1M rq/mth|||
 |google func||node py ruby php go java dotnet|||2M rq/mth|
-|azure func|.azurewebsites.net||||1M rq/mth|
-|ibm func|||||5M rq/mth|
-|oracle fun|||||NO FREE TIER|based on Fn|
+|azure func|.azurewebsites.net|node py java c# f# ps1|||1M rq/mth|
+|ibm func||node py ruby php go swift java dotnet ; docker|||5M rq/mth|based on Apache Openwhisk|
+|oracle fun||node py ruby go java|||NO FREE TIER|based on Fn|
 
 - begin.com (2015) is more a framework above raw AWS to use it easily, you have to allocate your AWS resources
 
@@ -84,23 +84,24 @@ Runtimes landscape:
 
 AWS Lambda has a "runtime API" to run any linux binary, so usable with php, f#, rust, binary has to call web api endpoint to get next request, then set its response
 
-| runtime | nb | google | azure | aws | others
+| runtime | nb | google | azure | aws | bigs | others
 |-|-|-|-|-|-|
-| node   | 18 | gae2 gaef gcr gf | aas af | aeb al | heroku d.ocean repl.it render fly vercel.func s.path deta vercel.edge cloudflare
-| python | 16 | gae2 gaef gcr gf | aas af | aeb al | heroku d.ocean repl.it render fly vercel.func s.path deta 
-| go     | 13 | gae2 gaef gcr gf |  -   - | aeb al | heroku d.ocean repl.it render fly vercel.func s.path
-| ruby   | 12 | gae2 gaef   - gf | aas  - | aeb al | heroku d.ocean repl.it render fly vercel.func
-| php    | 10 | gae2 gaef   - gf | aas  - | aeb  - | heroku d.ocean repl.it render s.path
-| java   | 10 | gae2 gaef gcr gf | aas af | aeb al | heroku repl.it
-| dotnet c# | 7 |  - gaef gcr gf | aas  - | aeb al | repl.it
-| docker  | 6 |    - gaef gcr  - |  -   - | aeb al | d.ocean fly
-| p.shell | 4 | - | aas af | - al | repl.it
-| f#      | 3 | - | aas af | -  - | repl.it
-| wasm    | 3 | - | - | - | s.path vercel.edge cloudflare
-| elixir  | 3 | - | - | - | fly render repl.it
-| rust    | 2 | - | - | - | render repl.it
-| deno    | 2 | - | - | - | fly repl.it
-| perl    | 2 | - | - | - | s.path repl.it
+| node   | 20 | gae2 gaef gcr gf | aas af | aeb al | ibm ora | heroku d.ocean repl.it render fly vercel.func s.path deta vercel.edge cloudflare
+| python | 18 | gae2 gaef gcr gf | aas af | aeb al | ibm ora | heroku d.ocean repl.it render fly vercel.func s.path deta 
+| go     | 15 | gae2 gaef gcr gf |  -   - | aeb al | ibm ora | heroku d.ocean repl.it render fly vercel.func s.path
+| ruby   | 14 | gae2 gaef   - gf | aas  - | aeb al | ibm ora | heroku d.ocean repl.it render fly vercel.func
+| java   | 12 | gae2 gaef gcr gf | aas af | aeb al | ibm ora | heroku repl.it
+| php    | 11 | gae2 gaef   - gf | aas  - | aeb  - | ibm   - | heroku d.ocean repl.it render s.path
+| dotnet c# | 8 |  - gaef gcr gf | aas af | aeb al | ibm   - | repl.it
+| docker  | 7 |    - gaef gcr  - |  -   - | aeb al | ibm   - | d.ocean fly
+| p.shell | 4 | - | aas af | - al | - | repl.it
+| f#      | 3 | - | aas af | -  - | - | repl.it
+| wasm    | 3 | - | - | - | - | s.path vercel.edge cloudflare
+| elixir  | 3 | - | - | - | - | fly render repl.it
+| rust    | 2 | - | - | - | - | render repl.it
+| deno    | 2 | - | - | - | - | fly repl.it
+| perl    | 2 | - | - | - | - | s.path repl.it
+| swift   | 2 | - | - | - | ibm | repl.it
 
 ## Traditional web hosting
 
@@ -123,19 +124,20 @@ Azure Storage 5GB
 
 ### Functions
 
-Very small units of code, pay per use : 
+Small units of code, supposed to run in 100ms, pay per use : 
 - Azure Functions : C#, F#, powershell, java/kotlin, node, python, custom (go, rust, ...)
   - built above Azure App Service :  _project_.azurewebsites.net/api/_function_
+  - Java/Kotlin : ad-hoc extensions in maven, gradle, intellij, vscode to build a zip sent to azure
+  - custom (Go, Rust) : build locally with vscode a linux/win binary being a http server, then deploy to azure
 - AWS Lambda : nodejs, python, ruby, java, go, dotnet, custom docker
+  - custom : binary must call a local HTTP API to get next request and to put a response
 - Google Functions : go, node, python, php, ruby, java, dotnet
-- IBM Apache OpenWhisk : js,swift,java,python,ruby,php,go,dotnet
+  - Java : source code maven buildable or pre-built fat JAR
+  - Dotnet (netcore3) : only C#, F#, VB with msbuild csproj/fsproj/vbproj files with nuget libs deps ; does not accept prebuilt binary
+- IBM Apache OpenWhisk : js,swift,java,python,ruby,php,go,dotnet ; docker
+  - custom: a binary named "exec" receiving a json string in stdin and puting a json string as its last stdout line [doc](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-runtimes#openwhisk_ref_docker)
+- Oracle function (Fn based) : node python ruby java go [list](https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/languagessupportedbyfunctions.htm)
 - Iron.io functions: go,rust,java,node,php,python,ruby, support AWS lambda
-- Oracle function : Fn based
-
-Google Function Java : source code maven buildable or pre-built fat JAR
-Google Function Dotnet (netcore3) : only C#, F#, VB with msbuild csproj/fsproj/vbproj files with nuget libs deps ; does not accept prebuilt binary
-Azure Function Java/Kotlin : ad-hoc extensions in maven, gradle, intellij, vscode to build a zip sent to azure
-Azure Function custom (Go, Rust) : build locally with vscode a linux/win binary being a http server, then deploy to azure
 
 ### Google layers
 
