@@ -168,6 +168,8 @@ Quickly scale automatically
   - gen1 2008beta 2011 : python2, php5, java8, go ; isolation by modified runtimes, api constrained : can use only google services via google libs
   - gen2 2018 : python3, php7, java11, go, node, ruby ; gVisor process isolation, no constrains
 - Flexible env : docker : python2/3, php5/7, java, go, node, ruby, netcore, custom
+  - can spawn threads/processes
+  - websockets ok
 
 ### Google CloudRun
 
