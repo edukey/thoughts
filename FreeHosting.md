@@ -85,7 +85,7 @@ Runtimes landscape:
 AWS Lambda has a "runtime API" to run any linux binary, so usable with php, f#, rust, binary has to call web api endpoint to get next request, then set its response
 
 | runtime | nb | google | azure | aws | bigs | others
-|-|-|-|-|-|-|
+|-|-|-|-|-|-|-|
 | node   | 20 | gae2 gaef gcr gf | aas af | aeb al | ibm ora | heroku d.ocean repl.it render fly vercel.func s.path deta vercel.edge cloudflare
 | python | 18 | gae2 gaef gcr gf | aas af | aeb al | ibm ora | heroku d.ocean repl.it render fly vercel.func s.path deta 
 | go     | 15 | gae2 gaef gcr gf |  -   - | aeb al | ibm ora | heroku d.ocean repl.it render fly vercel.func s.path
