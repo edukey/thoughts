@@ -67,18 +67,18 @@ Runtimes landscape:
 |digitalocean||node py go ruby php ; docker|||NO FREE TIER||2012 gVisor|
 |google appengine std2|.appspot.com|node go java php py ruby|-||28h/day||2018 24/7 gVisor|
 |google appengine flex|.appspot.com|docker ; node go java php py ruby netcore|-||NO FREE TIER||2016 24/7 run (vm)|
-|google cloudrun|.run.app|docker ; node py go java/kotlin/scala netcore||git|2M rq/mth||2019 run on-demand|
+|google cloudrun|.run.app|docker ; node py go java/kotlin netcore||git|2M rq/mth||2019 run on-demand|
 |azure app service|.azurewebsites.net|node py ruby php dotnet java|cosmos db|azure repos gh bb git ftps webdeploy cli/api edit|10 apps, 1GB||lin and win|
 |aws elastic beanstalk||node py php ruby go java dotnet ; docker|||NO FREE TIER||pay your EC2 instances, use web servers : apache nginx iis passenger|
 |aws lambda||node py ruby go java dotnet ps1 custom|||1M rq/mth|||
 |google func||node py ruby php go java dotnet|||2M rq/mth|
-|azure func|.azurewebsites.net|node py java c# f# ps1|||1M rq/mth|
+|azure func|.azurewebsites.net|node py java/kotlin c# f# ps1|||1M rq/mth|
 |ibm func||node py ruby php go swift java dotnet ; docker|||5M rq/mth|based on Apache Openwhisk|
 |oracle fun||node py ruby go java|||NO FREE TIER|based on Fn|
 
 - begin.com (2015) is more a framework above raw AWS to use it easily, you have to allocate your AWS resources
 
-## Per Runtimes
+## Per Languages
 
 "docker" here may also mean "any linux binary in proper arch (arm or amd)" (should split docker and linux bin?)
 
@@ -95,6 +95,7 @@ AWS Lambda has a "runtime API" to run any linux binary, so usable with php, f#, 
 | dotnet c# | 8 |  - gaef gcr gf | aas af | aeb al | ibm   - | repl.it
 | docker  | 7 |    - gaef gcr  - |  -   - | aeb al | ibm   - | d.ocean fly
 | p.shell | 4 | - | aas af | - al | - | repl.it
+| kotlin  | 3 | gcr | af | - | repl.it
 | f#      | 3 | - | aas af | -  - | - | repl.it
 | wasm    | 3 | - | - | - | - | s.path vercel.edge cloudflare
 | elixir  | 3 | - | - | - | - | fly render repl.it
