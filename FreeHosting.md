@@ -69,7 +69,7 @@ Runtimes landscape:
 |google appengine flex|.appspot.com|docker ; node go java php py ruby netcore|-||NO FREE TIER||2016 24/7 run (vm)|
 |google cloudrun|.run.app|docker ; node py go java/kotlin netcore||git|2M rq/mth||2019 run on-demand|
 |azure app service|.azurewebsites.net|node py ruby php dotnet java ; docker|cosmos db|azure repos gh bb git ftps webdeploy cli/api edit|10 apps, 1GB||lin and win|
-|aws elastic beanstalk||node py php ruby go java dotnet ; docker|||NO FREE TIER||pay your EC2 instances, use web servers : apache nginx iis passenger|
+|aws elastic beanstalk|.elasticbeanstalk.com|node py php ruby go java dotnet ; docker|||NO FREE TIER||pay your EC2 instances, use web servers : apache nginx iis passenger|
 |aws lambda||node py ruby go java dotnet ps1 custom|||1M rq/mth|||
 |google func||node py ruby php go java dotnet|||2M rq/mth|
 |azure func|.azurewebsites.net|node py java/kotlin c# f# ps1|||1M rq/mth|
