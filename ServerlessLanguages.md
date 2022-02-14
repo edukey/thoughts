@@ -48,6 +48,9 @@ requirements.txt
 
 - Beanstalk : [doc](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Ruby.html)
   - deps at deploy : Gemfile
+- AppEngine flex : [doc](https://cloud.google.com/appengine/docs/flexible/ruby/using-ruby-libraries)
+  - Gemfile, ok for linux compatible and natice libs
+  - ex: `entrypoint: rails server`
 - AppEngine std2 : [doc](https://cloud.google.com/appengine/docs/standard/ruby/runtime)
   - deps at deploy : Gemfile
   -  can use rack with puma, unicorn, Thin, ...
