@@ -12,8 +12,8 @@ Some platform also accept pre-built packages as docker images or zip files conta
 
 | ptf | cmd | remarks | doc |
 | - | - | - | - |
-| google appengine flex | gcloud app deploy | local build
-| google appengine std | gcloud app deploy | remote buildpacks
+| google appengine flex | gcloud app deploy | local build | [doc](https://cloud.google.com/appengine/docs/flexible)
+| google appengine std | gcloud app deploy | remote buildpacks | [doc](https://cloud.google.com/appengine/docs/standard)
 | google cloud run | gcloud run deploy | remote buildpacks, store docker in registry, deploy docker | [doc](https://cloud.google.com/run/docs/deploying-source-code) 
 | google functions | gcloud functions deploy | 
 | aws elastic beanstalk | eb deploy | local build or "aws codebuild" ; "bundle" zip with config and files | [doc](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html)
@@ -58,6 +58,9 @@ requirements.txt
 - Beanstalk
   - deps by eb via composer.json
   - or put all in your bundle file
+- AppEngine flex [doc](https://cloud.google.com/appengine/docs/flexible/php/using-php-libraries)
+  - composer.json, any linux/amd64 compatible
+  - must use a php web framework
 - AppEngine std2 [doc](https://cloud.google.com/appengine/docs/standard/php7/runtime)
   - need to have an index.php handling all requests (front controller)
   - or specify in config as `entrypoint: serve path/to/my/front/controller.php`
@@ -71,6 +74,9 @@ go.mod
 - Beanstalk [doc](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/go-environment.html)
   - build by eb with go.mod
   - or provide a binary in root or bin/
+- Appengine std2 : [doc](https://cloud.google.com/appengine/docs/standard/go/runtime)
+  - go.mod recommended but not mandatory [doc](https://cloud.google.com/appengine/docs/standard/go/specifying-dependencies)
+  - only linux/amd64 compatible libs
 
 ## Java (JVM)
 
