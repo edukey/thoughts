@@ -16,7 +16,7 @@ Some platform also accept pre-built packages as docker images or zip files conta
 | google appengine std | gcloud app deploy | remote buildpacks
 | google cloud run | gcloud run deploy | remote buildpacks, store docker in registry, deploy docker | [doc](https://cloud.google.com/run/docs/deploying-source-code) 
 | google functions | gcloud functions deploy | 
-| aws elastic beanstalk | eb deploy | local build or code build ; "bundle" zip with config and files | [doc](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html)
+| aws elastic beanstalk | eb deploy | local build or "aws codebuild" ; "bundle" zip with config and files | [doc](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html)
 
 buildpacks : used by heroku, pivotal and google to detect lang, retrieve dependencies, build and generate an OCI image (Docker)
 
@@ -40,17 +40,29 @@ requirements.txt
 - Beanstalk
   - uses WSGI, django
   - requirements.txt : eb use it to get dependencies [doc](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/python-configuration-requirements.html)
+- AppEngine std2 [doc](https://cloud.google.com/appengine/docs/standard/python3/runtime) : requirements.txt
+  - app.yaml specifies the entry point function being web serv or else AppEngine starts gunicorn and there is a WSGI main.py with "app" object
+
 
 ## Ruby
 
 - Beanstalk : [doc](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Ruby.html)
   - deps at deploy : Gemfile
+- AppEngine std2 : [doc](https://cloud.google.com/appengine/docs/standard/ruby/runtime)
+  - deps at deploy : Gemfile
+  -  can use rack with puma, unicorn, Thin, ...
+  -  generic : `entrypoint: bundle exec ruby app.rb`
 
 ## PHP
 
 - Beanstalk
   - deps by eb via composer.json
   - or put all in your bundle file
+- AppEngine std2 [doc](https://cloud.google.com/appengine/docs/standard/php7/runtime)
+  - need to have an index.php handling all requests (front controller)
+  - or specify in config as `entrypoint: serve path/to/my/front/controller.php`
+  - can use a long running process using `entrypoint: php long-process.php`
+  - php.ini can be used to enable extra extensions (.so files)
 
 ## Go
 
