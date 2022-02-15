@@ -79,6 +79,13 @@ requirements.txt
   - or specify in config as `entrypoint: serve path/to/my/front/controller.php`
   - can use a long running process using `entrypoint: php long-process.php`
   - php.ini can be used to enable extra extensions (.so files)
+- Cloud Function : [doc](https://cloud.google.com/functions/docs/calling/http#functions-calling-http-php)
+```
+use Google\CloudFunctions\FunctionsFramework;
+use Psr\Http\Message\ServerRequestInterface;
+FunctionsFramework::http('helloHttp', 'helloHttp');
+function helloHttp(ServerRequestInterface $request): string { return 'Hello'; }
+```
 
 ## Go
 
