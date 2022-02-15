@@ -15,7 +15,7 @@ Some platform also accept pre-built packages as docker images or zip files conta
 | google appengine flex | gcloud app deploy | local build | [doc](https://cloud.google.com/appengine/docs/flexible)
 | google appengine std | gcloud app deploy | remote buildpacks | [doc](https://cloud.google.com/appengine/docs/standard)
 | google cloud run | gcloud run deploy | remote buildpacks, store docker in registry, deploy docker | [doc](https://cloud.google.com/run/docs/deploying-source-code) 
-| google functions | gcloud functions deploy | 
+| google functions | gcloud functions deploy | | [doc](https://cloud.google.com/functions/docs/concepts/exec)
 | aws elastic beanstalk | eb deploy | local build or "aws codebuild" ; "bundle" zip with config and files | [doc](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html)
 
 buildpacks : used by heroku, pivotal and google to detect lang, retrieve dependencies, build and generate an OCI image (Docker)
@@ -23,6 +23,11 @@ buildpacks : used by heroku, pivotal and google to detect lang, retrieve depende
 https://github.com/googlecloudplatform/buildpacks ; https://buildpacks.io/
 
 eb : nginx in front of web app on port 5000, static files and compression by nginx
+
+Google func : 
+ - HTTP
+ - Background : google native event format from PubSub, Storage, Firebase, ... : Node Python Go Java
+ - CloudEvents : using standard format : Ruby PHP C#
 
 ## Nodejs
 
@@ -42,7 +47,12 @@ requirements.txt
   - requirements.txt : eb use it to get dependencies [doc](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/python-configuration-requirements.html)
 - AppEngine std2 [doc](https://cloud.google.com/appengine/docs/standard/python3/runtime) : requirements.txt
   - app.yaml specifies the entry point function being web serv or else AppEngine starts gunicorn and there is a WSGI main.py with "app" object
-
+- AppEngine Flex : [doc](https://cloud.google.com/appengine/docs/flexible/python/using-python-libraries) : requirements.txt
+  - use any web fmk : flask, django, ... Need a proper WSGI server : gunicorn, uwsgi, ...
+- Google Functions : [doc](https://cloud.google.com/functions/docs/writing/specifying-dependencies-python) : requirements.txt or self contained
+  - some packages are always pre-installed, if needed shoudl ref them with proper version to avoid fetch at deployment
+  - can use google artifact repo for private dependencies
+  - HTTP function uses Flask and need "functions_framework"
 
 ## Ruby
 
